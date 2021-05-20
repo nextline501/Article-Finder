@@ -3,14 +3,14 @@ package com.grupp3.article_finder.Entities;
 import javax.persistence.*;
 
 @Entity
-@Table( name = "articles")
+@Table(name = "articles")
 public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String text;
-    private String tokenTree;
+    private String tokentree;
     private String path;
 
     public Article() {
@@ -32,12 +32,12 @@ public class Article {
         this.text = text;
     }
 
-    public String getTokenTree() {
-        return tokenTree;
+    public String getTokentree() {
+        return tokentree;
     }
 
-    public void setTokenTree(String tokenTree) {
-        this.tokenTree = tokenTree;
+    public void setTokentree(String tokentree) {
+        this.tokentree = tokentree;
     }
 
     public String getPath() {
@@ -53,7 +53,7 @@ public class Article {
         return "Article{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", tokenTree='" + tokenTree + '\'' +
+                ", tokentree='" + tokentree + '\'' +
                 ", path='" + path + '\'' +
                 '}';
     }

@@ -13,7 +13,6 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-
 @Configuration
 class MyWebMvcConfigurer implements WebMvcConfigurer {
     @Override

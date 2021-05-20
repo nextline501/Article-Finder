@@ -8,8 +8,6 @@ import org.hibernate.dialect.function.VarArgsSQLFunction;
 import org.hibernate.dialect.identity.IdentityColumnSupport;
 import org.hibernate.type.StringType;
 
-// A class to tell hibernate to communicate with SQLite,
-// hibernate doesn't have that by default
 public class SQLiteDialect extends Dialect {
     public SQLiteDialect() {
         registerColumnType(Types.BIT, "integer");
@@ -144,5 +142,3 @@ public class SQLiteDialect extends Dialect {
         return false;
     }
 }
-
-

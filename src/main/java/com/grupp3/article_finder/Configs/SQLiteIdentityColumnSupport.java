@@ -4,7 +4,7 @@ import org.hibernate.boot.MappingException;
 import org.hibernate.dialect.identity.IdentityColumnSupportImpl;
 
 public class SQLiteIdentityColumnSupport extends IdentityColumnSupportImpl {
-    // To be able to use autoincrement
+
     @Override
     public boolean supportsIdentityColumns() {
         return true;

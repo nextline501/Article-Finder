@@ -29,6 +29,11 @@ public class ArticleController {
         return articleService.addNewArticle(article);
     }
 
+    @DeleteMapping("/api/articles/{id}")
+    public void deleteArticleById(@PathVariable int id){
+        articleService.deleteArticleById(id);
+    }
+
 
 
 

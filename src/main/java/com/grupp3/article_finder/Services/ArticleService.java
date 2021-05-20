@@ -30,4 +30,11 @@ public class ArticleService {
     public void deleteArticleById(int id) {
         articleRepository.deleteById(id);
     }
+
+    public void updateArticleById(int id, Article article) {
+        if(articleRepository.existsById(id)){
+            article.setId(id);
+            articleRepository.save(article);
+        }
+    }
 }

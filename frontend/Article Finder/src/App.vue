@@ -1,10 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <nav>
+    <h1>Article Finder</h1>
+  </nav>
+  <Main />
+
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Main from './components/Main.vue'
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
@@ -19,4 +22,5 @@ import HelloWorld from './components/HelloWorld.vue'
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>

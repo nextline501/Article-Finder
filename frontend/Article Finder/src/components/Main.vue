@@ -35,7 +35,7 @@
         let articleData = {
           articleText: this.textFeedModel.textFeed,
         }
-
+        
         DataServices.sendArticleText(articleData).then(response => {
           console.log(response);
         })

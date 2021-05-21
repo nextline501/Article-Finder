@@ -4,8 +4,11 @@ Vue vite:
   npm run dev
   npm install vue-router@4
   npm install vuex@4
+  
+  Dependencies:
+  npm install axios
+
 
 test 
-
 cd "article finder"
 cd .. för att backa

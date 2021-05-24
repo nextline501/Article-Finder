@@ -12,6 +12,8 @@ public class Article {
     private String text;
     private String tokentree;
     private String path;
+    private String title;
+    private String summary;
 
     public Article() {
     }
@@ -48,6 +50,22 @@ public class Article {
         this.path = path;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -55,6 +73,8 @@ public class Article {
                 ", text='" + text + '\'' +
                 ", tokentree='" + tokentree + '\'' +
                 ", path='" + path + '\'' +
+                ", title='" + title + '\'' +
+                ", summary='" + summary + '\'' +
                 '}';
     }
 }

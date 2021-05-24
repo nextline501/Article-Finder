@@ -1,18 +1,34 @@
 <template>
+
+
   <div>
     <div v-if="!submitted">
 
-      <textarea 
-        placeholder="Text" 
-        class="ArticleTextFeed"
-        id="ArticleTextFeed"
-        required v-model="textFeedModel.textFeed"
-        name="ArticleTextFeed"
-      ></textarea>
+      <div class="form-group">
 
-      <button id="postArticleText" @click="createArticleText" class="postArticleText">Post</button>
+        <label for="textArea">Input</label>
+        <textarea 
+          placeholder="Input text that you want to match" 
+          class="form-control rounded-10"
+          rows="15"
+          id="textArea"
+          required v-model="textFeedModel.textFeed"
+          name="form-control rounded-10">
+        </textarea>
+
+        <div class="d-grid gap-2">
+
+          <button id="postArticleText" 
+            @click="createArticleText" 
+            type="button" 
+            class="btn btn-dark btn-elegant btn-rounded" 
+          >Submit</button>
+
+        </div>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -47,13 +63,25 @@
 
 <style scoped>
 
-h1{
-  color: #42b983;
+.form-group{
+  width: 95%;
+  float: none;
+  margin-left: 20px;
 }
 
-.ArticleTextFeed {
-  height:400px;
-  width:600px;
+label{
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  float: left;
+}
+
+button{
+  margin-top: 20px;
+}
+
+textarea{
+  margin-top: 30px;
 }
 
 </style>

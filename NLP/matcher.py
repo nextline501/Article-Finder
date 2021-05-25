@@ -77,3 +77,24 @@ def find_matches(sample, article):
     print("Nbr of words match:", match_dict['nbr_words_match'], "Percent match: ", match_dict['percent_match'])
 
     return match_dict
+
+
+def match_rank_articles(search_text, article_list):
+
+    search_text_doc = preprocessing_article(search_text)
+    match_results = []
+
+    for article in article_list:
+        text_doc = preprocessing_article(article)
+        match = find_matches(search_text_doc, text_doc)
+        match_results.append(match)
+
+    #Sort from highest percent_match to lowest
+    match_results.sort(key=myFunc, reverse=True)
+
+    print("\nRanking, the first position: ", match_results[0]['percent_match'] ,"Number of articles: ", len(match_results))
+
+    return match_results
+
+def myFunc(e):
+    return e['percent_match']

@@ -54,3 +54,26 @@ def preprocessing_article(article):
     for token in doc_cleaned:
         list.append(token)
     return list
+
+
+# Must be adapted to an article object instead of just text!!!
+def find_matches(sample, article):
+
+    patterns = [nlp.make_doc(text) for text in sample]
+    matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+    matcher.add('phrase_matcher', None, *patterns)
+
+    # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
+    doc = nlp(" ".join(article))
+    char_matched= matcher(doc)
+    match_text = []
+    for match_id, start, end in char_matched:
+        match = doc[start:end]
+        match_text.append(match)
+
+    print(match_text)
+
+    match_dict = { 'article': article, 'nbr_words_match': len(match_text), 'percent_match': len(match_text) / len(doc) * 100}
+    print("Nbr of words match:", match_dict['nbr_words_match'], "Percent match: ", match_dict['percent_match'])
+
+    return match_dict

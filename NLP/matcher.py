@@ -36,3 +36,21 @@ At Won’s request, Buehler adapted “Viral Counterpoint” for the violin. Thi
 The two pieces are as different as the proteins they are based on. “Protein Antibody” is harmonious and playful; “Viral Counterpoint” is foreboding, even sinister. “Protein Antibody,” which is based on the part of the protein that attaches to SARS-CoV-2, runs for five minutes; “Viral Counterpoint,” which represents the virus’s entire spike protein, meanders for 50. """ 
 
 article_list = [text1, text2]
+
+
+def preprocessing_article(article):
+
+    print()
+
+    doc = nlp(article)
+
+    # Merge all different ents in to one token each, ex. Kalle Andersson becomes one token
+    with doc.retokenize() as retokenizer:
+        for ent in doc.ents:
+            retokenizer.merge(doc[ent.start:ent.end])
+
+    doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+    list = []
+    for token in doc_cleaned:
+        list.append(token)
+    return list

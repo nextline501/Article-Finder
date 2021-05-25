@@ -11,7 +11,7 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Article 1</td>
+      <td>{{articles[0].title}}</td>
       <td>PDF</td>
     </tr>
     <tr>
@@ -30,7 +30,14 @@
 
 <script>
 export default {
-  name: "Results"
+  data(){
+     name: "Results"
+  },
+  computed: {
+    articles(){
+      return this.$store.state.articles
+    }
+  }
 }
 </script>
 
@@ -42,3 +49,5 @@ h4{
 }
 
 </style>
+
+

@@ -1,14 +1,14 @@
 <template>
 
-  <Navbar />
+  <Navbar></Navbar>
   
   <div class="container-fluid">
   <div class="row">
-    <div class="col">
-        <Main />
+    <div class="col-sm">
+      <Main></Main>
     </div>
-    <div class="col">
-        <Results />
+    <div class="col-sm">
+      <Results ></Results>
     </div>
   </div>
 </div>

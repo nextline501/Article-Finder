@@ -9,11 +9,10 @@
         <label for="textArea">Input</label>
         <textarea 
           placeholder="Input text that you want to match" 
-          class="form-control rounded-10"
+          class="shadow p-3 mb-5 form-control rounded-10"
           rows="15"
           id="textArea"
-          required v-model="textFeedModel.textFeed"
-          name="form-control rounded-10">
+          required v-model="textFeedModel.textFeed">
         </textarea>
 
         <div class="d-grid gap-2">
@@ -21,7 +20,7 @@
           <button id="postArticleText" 
             @click="createArticleText" 
             type="button" 
-            class="btn btn-dark btn-elegant btn-rounded" 
+            class=" btn btn-dark btn-rounded" 
           >Submit</button>
 
         </div>
@@ -67,6 +66,7 @@
   width: 95%;
   float: none;
   margin-left: 20px;
+  border: 0;
 }
 
 label{
@@ -77,11 +77,26 @@ label{
 }
 
 button{
-  margin-top: 20px;
+  margin-top: 0px;
+  border: 0px;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  padding: 15px;
+
+}
+
+button:hover{
+  border: 0px;
+  background-color: #25837e;
+  box-shadow: 0px 15px 20px rgba(78, 78, 78, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
 }
 
 textarea{
   margin-top: 30px;
+
 }
 
 </style>

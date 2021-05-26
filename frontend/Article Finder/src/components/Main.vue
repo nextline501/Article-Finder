@@ -49,7 +49,7 @@
     methods: {
       createArticleText(){
         let articleData = {
-          articleText: this.textFeedModel.textFeed,
+          searchText: this.textFeedModel.textFeed,
         }
         
         DataServices.sendArticleText(articleData).then(response => {

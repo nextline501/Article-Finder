@@ -38,12 +38,4 @@ public class ArticleController {
     public void updateArticleById(@PathVariable int id, @RequestBody Article article ){
         articleService.updateArticleById(id, article);
     }
-
-    //TEST ENDPOINT
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/api/data")
-    public void ceateArticle(@RequestBody String test){
-        System.out.println(test);
-        System.out.println("post ok");
-    }
 }

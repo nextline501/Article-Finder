@@ -4,11 +4,16 @@ Vue vite:
   npm run dev
   npm install vue-router@4
   npm install vuex@4
+  npm install bootstrap
   
   Dependencies:
   npm install axios
 
-
 test 
 cd "article finder"
 cd .. för att backa
+
+Starta Sanic server
+  cd nlpApi
+  python main.py
+

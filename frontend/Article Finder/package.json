@@ -9,7 +9,7 @@
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
-    "bootstrap": "^5.0.0-beta3",
+    "bootstrap": "^5.0.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.8",
     "vuex": "^4.0.0"

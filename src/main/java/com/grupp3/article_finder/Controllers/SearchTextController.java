@@ -1,7 +1,6 @@
 package com.grupp3.article_finder.Controllers;
 
 import com.grupp3.article_finder.Entities.Article;
-import com.grupp3.article_finder.Entities.SearchText;
 import com.grupp3.article_finder.Services.SearchTextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,7 @@ public class SearchTextController {
     SearchTextService searchTextService;
 
     @PostMapping("/api/searchtext")
-    public List<Article> matchSearchText(@RequestBody SearchText searchText){
+    public List<Article> matchSearchText(@RequestBody String searchText){
         return searchTextService.matchSearchText(searchText);
     }
 }

@@ -1,7 +1,74 @@
 import spacy
 from spacy.matcher import PhraseMatcher
+from summary import get_summary
 
 nlp = spacy.load("en_core_web_trf")
+
+def preprocessing_article(article):
+
+    print()
+
+    doc = nlp(article)
+
+    # Merge all different ents in to one token each, ex. Kalle Andersson becomes one token
+    with doc.retokenize() as retokenizer:
+        for ent in doc.ents:
+            retokenizer.merge(doc[ent.start:ent.end])
+
+    doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+    list = []
+    for token in doc_cleaned:
+        list.append(token)
+    return list
+
+
+def find_matches(sample, article):
+
+    patterns = [nlp.make_doc(text) for text in sample]
+    matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+    matcher.add('phrase_matcher', None, *patterns)
+
+    # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
+    article_tokentree = article['tokentree']
+    doc = nlp(" ".join(article_tokentree))
+    char_matched= matcher(doc)
+    match_text = []
+    for match_id, start, end in char_matched:
+        match = doc[start:end]
+        match_text.append(match)
+
+    print(match_text)
+
+    match_dict = { 'article': article, 'nbr_words_match': len(match_text), 'percent_match': len(match_text) / len(doc) * 100}
+    print("Nbr of words match:", match_dict['nbr_words_match'], "Percent match: ", match_dict['percent_match'])
+
+    return match_dict
+
+
+def match_rank_articles(search_text, article_list):
+
+    search_text_doc = preprocessing_article(search_text)
+    match_results = []
+
+    for article in article_list:
+        match = find_matches(search_text_doc, article)
+        match_results.append(match)
+
+    #Sort from highest percent_match to lowest
+    match_results.sort(key=myFunc, reverse=True)
+
+    print("\nRanking, the first position: ", match_results[0]['percent_match'] ,"Number of articles: ", len(match_results))
+
+    return match_results
+
+def myFunc(e):
+    return e['percent_match']
+
+
+
+
+
+# Testing match_rank_articles, should be removed later
 
 search_text = "My movie heros are Sigourney Weaver, playing Ellen Louise Ripley in Alien, Aliens and of course Arnold Schwarzenegger in Commando and Terminator. Buehler adapted"
 
@@ -35,66 +102,39 @@ At Won’s request, Buehler adapted “Viral Counterpoint” for the violin. Thi
 
 The two pieces are as different as the proteins they are based on. “Protein Antibody” is harmonious and playful; “Viral Counterpoint” is foreboding, even sinister. “Protein Antibody,” which is based on the part of the protein that attaches to SARS-CoV-2, runs for five minutes; “Viral Counterpoint,” which represents the virus’s entire spike protein, meanders for 50. """ 
 
-article_list = [text1, text2]
 
 
-def preprocessing_article(article):
 
-    print()
+article1 =  {
+            'text': text1,
+            'tokentree':preprocessing_article(text1),
+            'path': 'https://pythonexamples.org/python-json-to-list/',
+            'title': 'Heros',
+            'summary': get_summary(text1,5)
+            }
 
-    doc = nlp(article)
-
-    # Merge all different ents in to one token each, ex. Kalle Andersson becomes one token
-    with doc.retokenize() as retokenizer:
-        for ent in doc.ents:
-            retokenizer.merge(doc[ent.start:ent.end])
-
-    doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
-    list = []
-    for token in doc_cleaned:
-        list.append(token)
-    return list
-
-
-# Must be adapted to an article object instead of just text!!!
-def find_matches(sample, article):
-
-    patterns = [nlp.make_doc(text) for text in sample]
-    matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
-    matcher.add('phrase_matcher', None, *patterns)
-
-    # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
-    doc = nlp(" ".join(article))
-    char_matched= matcher(doc)
-    match_text = []
-    for match_id, start, end in char_matched:
-        match = doc[start:end]
-        match_text.append(match)
-
-    print(match_text)
-
-    match_dict = { 'article': article, 'nbr_words_match': len(match_text), 'percent_match': len(match_text) / len(doc) * 100}
-    print("Nbr of words match:", match_dict['nbr_words_match'], "Percent match: ", match_dict['percent_match'])
-
-    return match_dict
+article2 =  {
+            'text': text2,
+            'tokentree':preprocessing_article(text2),
+            'path': 'https://opa20.lms.nodehill.se/article/kodexempel-rest-mellan-java-spring-och-python-sanic',
+            'title': 'Covid19',
+            'summary': get_summary(text2,5)
+            }
 
 
-def match_rank_articles(search_text, article_list):
 
-    search_text_doc = preprocessing_article(search_text)
-    match_results = []
+article_list = [article1, article2]
 
-    for article in article_list:
-        text_doc = preprocessing_article(article)
-        match = find_matches(search_text_doc, text_doc)
-        match_results.append(match)
+# It works!
+# match_rank_articles(search_text, article_list)
 
-    #Sort from highest percent_match to lowest
-    match_results.sort(key=myFunc, reverse=True)
 
-    print("\nRanking, the first position: ", match_results[0]['percent_match'] ,"Number of articles: ", len(match_results))
 
-    return match_results
 
-def myFunc(e):
-    return e['percent_match']
+
+
+
+
+
+
+

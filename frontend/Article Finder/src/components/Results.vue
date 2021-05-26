@@ -5,14 +5,14 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Title</th>
-      <th scope="col">Full version</th>
+      <th scope="col">Summary</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
       <td>{{articles[0].title}}</td>
-      <td>PDF</td>
+      <td>Link to Summary</td>
     </tr>
     <tr>
       <th scope="row">2</th>

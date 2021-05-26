@@ -26,4 +26,10 @@ a{
   font-size: 20px;
 }
 
+nav{
+  -webkit-box-shadow: 0 8px 6px -6px rgb(124, 124, 124);
+  -moz-box-shadow: 0 8px 6px -6px rgb(153, 153, 153);
+  box-shadow: 0 8px 6px -6px rgb(153, 153, 153);
+}
+
 </style>

@@ -1,5 +1,5 @@
-from spacy_matching_ import preprocessing_article
-from spacy_summary import get_summary
+from matcher import preprocessing_article
+from summary import get_summary
 
 def create_article_in_db():
 

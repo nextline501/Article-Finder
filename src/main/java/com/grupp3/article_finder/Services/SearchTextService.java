@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,29 +21,50 @@ public class SearchTextService {
     String url = "http://localhost:5000/nlpPost";
 
     RestTemplate restTemplate = new RestTemplate();
-    Map<String, String> map = new HashMap<>(); 
-       
+//    Map<String, String> map = new HashMap<>();
+
     public List<Article> getAllArticles(){
         System.out.println("Database stuff: " + (List<Article>)articleRepository.findAll());
         return (List<Article>) articleRepository.findAll();
     }
-    /*
+
+    // Alternative 1, not able to deconstruct string of articles in sanic
+//    public Map sendDataToSanic(String vueText) {
+//        System.out.println("vue text proof: " + vueText);
+//        map.put("searchText", vueText);
+//        map.put("dataBaseArticles", getAllArticles().toString());
+//
+//        for (Map.Entry<String, String> e : map.entrySet())
+//            System.out.println(e.getKey() + " " + e.getValue());
+//
+//        Map test =  restTemplate.postForObject(url, map, Map.class);
+//        System.out.println("Tessssst: " + test);
+//        return test;
+//    }
+
+    // Alternative 2, can access all data in sanic
     public Map sendDataToSanic(String vueText) {
         System.out.println("vue text proof: " + vueText);
+        List<Article> list = getAllArticles();
+        Map<String, String> map3 = new HashMap<>();
+        List<Map> maplist = new ArrayList<>();
 
-        map.put("searchText", vueText);
-        map.put("dataBaseArticles", getAllArticles().toString());
+        for(Article article: list){
+            map3 = new HashMap<>();
+            map3.put("searchText", vueText);
+            map3.put("id",String.valueOf(article.getId()));
+            map3.put("text", article.getText());
+            map3.put("tokentree", article.getTokentree());
+            map3.put("path", article.getPath());
+            map3.put("title", article.getTitle());
+            map3.put("summary", article.getSummary());
 
-        for (Map.Entry<String, String> e : map.entrySet())
-            System.out.println(e.getKey() + " " + e.getValue());
+            maplist.add(map3);
+        }
 
-        return restTemplate.postForObject(url, map, Map.class);
-    }
-    */
-
-    public String sendDataToSanic(String vueText){
-        return restTemplate.postForObject(url, vueText, String.class);
-        
+        Map test =  restTemplate.postForObject(url, maplist, Map.class);
+        System.out.println("Tessssst: " + test);
+        return test;
     }
 
     public List<Article> matchSearchText(String searchText) {

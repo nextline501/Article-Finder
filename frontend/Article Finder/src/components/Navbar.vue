@@ -1,9 +1,9 @@
 <template>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark" >
   <div class="container-fluid">
     <a class="navbar-brand" href="">
       <img src="/logo-dark.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Article Finder </a>
-    <span class="navbar-text">matching your needs</span>
+    <span class="navbar-text">Matching Your Needs</span>
   </div>
 </nav>
 </template>
@@ -16,20 +16,26 @@ export default {
 
 <style scoped>
 a{
-  font-family: 'Julius Sans One', sans-serif;
+  font-weight: 300;
+  font-family: 'Playfair Display', serif;
   font-size: 25px;
 }
 .navbar-text{
-  color: rgb(51, 51, 51);
-  font-family: 'Montserrat', sans-serif;
   font-weight: 300;
+  margin-right: 20px;
   font-size: 20px;
+  font-weight: 300;
+  font-family: 'Playfair Display', serif;
 }
 
 nav{
   -webkit-box-shadow: 0 8px 6px -6px rgb(124, 124, 124);
   -moz-box-shadow: 0 8px 6px -6px rgb(153, 153, 153);
   box-shadow: 0 8px 6px -6px rgb(153, 153, 153);
+}
+
+img{
+  margin-right: 5px;
 }
 
 </style>

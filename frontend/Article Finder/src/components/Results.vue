@@ -1,5 +1,5 @@
 <template>
-  <h4>Your matches</h4>
+  <h4>Matches</h4>
   <table class="table">
   <thead class="shadow p-3 mb-5">
     <tr>
@@ -40,6 +40,8 @@ h4{
   font-size: 22px;
   float: left;
   margin-bottom: 20px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
 }
 
 thead{

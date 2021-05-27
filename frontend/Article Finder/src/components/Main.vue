@@ -41,11 +41,12 @@
 
     methods: {
       createArticleText(){
+        
         let articleData = {
           searchText: this.textFeedModel.textFeed,
         }
         
-        DataServices.sendArticleText(articleData).then(response => {
+        DataServices.sendArticleText(articleData.searchText).then(response => {
           console.log(response);
         })
       }

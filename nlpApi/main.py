@@ -1,6 +1,7 @@
 from sanic import Sanic, response as res
 from sanic.exceptions import NotFound
 from time import time
+from matcher import match_rank_articles
 
 # instantiate the app object
 app = Sanic("app") # __name__
@@ -19,12 +20,14 @@ async def nlpGet(req):
 async def nlpPost(req):
 
     message = req.json
-    print(message)
-    print(message['dataBaseArticles'][0]['summary'])
-    print(message['searchText'])
-    # print(message['searchText']['searchText'])
+    article_list = message['dataBaseArticles']
+    searchText = message['searchText']
+    result = match_rank_articles(searchText, article_list)
+    print(result)
 
-    return res.json({"message": "Sanic POST OK!"})
+    dictionary = {'result': result}
+
+    return res.json(dictionary)
 
 # start the server
 if __name__ == "__main__":

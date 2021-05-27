@@ -19,10 +19,8 @@ async def nlpGet(req):
 async def nlpPost(req):
 
     message = req.json
-    print(message)
-    print(message[0]['summary'])
-    print(message[0]['searchText'])
-
+    # print(message)
+    print(message['dataBaseArticles'][0]['summary'])
 
     return res.json({"message": "Sanic POST OK!"})
 

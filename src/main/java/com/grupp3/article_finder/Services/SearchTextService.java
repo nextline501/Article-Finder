@@ -37,8 +37,6 @@ public class SearchTextService {
         return test;
     }
 
-
-
     public List<Article> matchSearchText(String searchText) {
 
         //Get string from vue

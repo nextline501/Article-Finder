@@ -12,7 +12,7 @@
     <tr>
       <th scope="row">1</th>
       <td>{{articles[0].title}}</td>
-      <td>Link to Summary</td>
+      <td>{{articles[0].path}}</td>
     </tr>
     <tr>
       <th scope="row">2</th>

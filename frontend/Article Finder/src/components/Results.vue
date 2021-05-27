@@ -1,7 +1,7 @@
 <template>
-  <h4>Your matches</h4>
+  <h4>Matches</h4>
   <table class="table">
-  <thead>
+  <thead class="shadow p-3 mb-5">
     <tr>
       <th scope="col"></th>
       <th scope="col">Title</th>
@@ -44,10 +44,17 @@ export default {
 <style scoped>
 h4{
   margin-top: 30px;
-  font-size: 25px;
+  font-size: 22px;
   float: left;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
 }
 
+thead{
+  background: rgb(42, 44, 46);
+  color: white;
+}
+
+
 </style>
-
-

@@ -6,8 +6,5 @@ import "bootstrap";
 import router from './router.js'
 import store from './store.js'
 
-const app = createApp(App)
-app.use(router)
-app.use(store)
-app.mount('#app')
+createApp(App).use(router).use(store).mount('#app')
 

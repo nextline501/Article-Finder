@@ -1,7 +1,5 @@
 <template>
-
-
-  <div>
+<div>
     <div v-if="!submitted">
 
       <div class="form-group">

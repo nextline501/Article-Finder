@@ -1,18 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+// Pages
 import Main from './components/Main.vue'
 import Summary from './components/Summary.vue'
+import Results from './components/Results.vue'
 
+// Routing to components
 const routes = [
     {
-        name: "home",
-        path: "/",
-        component: "Main"
+        path: '/',
+        name: 'home',
+        component: Main
     },
     {
-        name: 'summaries',
-        path: '/summaries',
-        component: 'Summary'
-    }
+        
+        path: '/summary',
+        name: 'Summary',
+        component: Summary
+    },
+    {
+        path: '/results',
+        name: 'Results',
+        component: Results
+    },
 ]
 
 const router = createRouter({

@@ -1,26 +1,14 @@
 <template>
-
+<div>
   <Navbar></Navbar>
+  <router-view></router-view>
   
-  <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
-      <Main></Main>
-    </div>
-    <div class="col-sm">
-      <Results ></Results>
-    </div>
-  </div>
-</div>
-
-
-  
+</div>  
 </template>
 
 <script setup>
-import Main from './components/Main.vue'
 import Navbar from './components/Navbar.vue'
-import Results from './components/Results.vue'
+import Home from './components/Home.vue'
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
@@ -41,9 +29,4 @@ import Results from './components/Results.vue'
   color: #2c3e50;
   margin-top: 0px;
 }
-
-
-
-
-
 </style>

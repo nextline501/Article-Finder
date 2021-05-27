@@ -1,4 +1,5 @@
 <template>
+<div>
   <h4>Matches</h4>
   <table class="table">
   <thead class="shadow p-3 mb-5">
@@ -12,7 +13,7 @@
     <tr>
       <th scope="row">1</th>
       <td>{{articles[0].title}}</td>
-      <td>{{articles[0].path}}</td>
+      <router-link to="/Summary" class="nav-link">{{articles[0].path}}</router-link>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -26,13 +27,13 @@
     </tr>
   </tbody>
 </table>
+</div>
 </template>
 
 <script>
 export default {
-  data(){
-     name: "Results"
-  },
+  name: "Results",
+
   computed: {
     articles(){
       return this.$store.state.articles
@@ -56,5 +57,12 @@ thead{
   color: white;
 }
 
+.nav-link{
+  text-decoration: none;
+  color: rgb(0, 0, 238);
+}
+.nav-link:hover{
+  color:darkblue;
+}
 
 </style>

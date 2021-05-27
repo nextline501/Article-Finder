@@ -17,6 +17,11 @@ async def nlpGet(req):
 
 @app.post('/nlpPost')
 async def nlpPost(req):
+
+    message = req.json
+    # print(message)
+    print(message['dataBaseArticles'][0]['summary'])
+
     return res.json({"message": "Sanic POST OK!"})
 
 # start the server

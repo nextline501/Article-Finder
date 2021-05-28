@@ -1,6 +1,8 @@
 import spacy
 from spacy.matcher import PhraseMatcher
 from summary import get_summary
+import ast
+
 
 nlp = spacy.load("en_core_web_trf")
 
@@ -28,8 +30,14 @@ def find_matches(sample, article):
     matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
     matcher.add('phrase_matcher', None, *patterns)
 
-    # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
+    # List in a string
     article_tokentree = article['tokentree']
+
+    # Converts a list in a string to a list
+    article_tokentree = ast.literal_eval(article_tokentree)
+
+
+    # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
     doc = nlp(" ".join(article_tokentree))
     char_matched= matcher(doc)
     match_text = []
@@ -40,7 +48,7 @@ def find_matches(sample, article):
     print(match_text)
 
     match_dict = { 'article': article, 'nbr_words_match': len(match_text), 'percent_match': len(match_text) / len(doc) * 100}
-    print("Nbr of words match:", match_dict['nbr_words_match'], "Percent match: ", match_dict['percent_match'])
+    print(f"Nbr of words mathing: {match_dict['nbr_words_match']} , ----> {match_dict['percent_match']:.2f} %  ")
 
     return match_dict
 
@@ -57,9 +65,13 @@ def match_rank_articles(search_text, article_list):
     #Sort from highest percent_match to lowest
     match_results.sort(key=myFunc, reverse=True)
 
-    print("\nRanking, the first position: ", match_results[0]['percent_match'] ,"Number of articles: ", len(match_results))
+    print(f"\nBest matching article: {match_results[0]['percent_match']} %   Nbr of articles matched: {len(match_results)}")
 
-    return match_results
+    # Return max the 5 best matches
+    if len(match_results) > 5:
+        return match_results[0:5]
+    else:
+        return match_results
 
 def myFunc(e):
     return e['percent_match']

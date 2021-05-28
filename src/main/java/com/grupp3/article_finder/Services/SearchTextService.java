@@ -32,7 +32,7 @@ public class SearchTextService {
         map.put("searchText", vueText);
         map.put("dataBaseArticles", getAllArticles());
 
-        Map test =  restTemplate.postForObject(url, map, Map.class);
+        Map test = restTemplate.postForObject(url, map, Map.class);
         System.out.println("Tessssst: " + test);
         return test;
     }

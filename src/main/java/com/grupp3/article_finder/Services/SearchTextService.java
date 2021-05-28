@@ -18,31 +18,23 @@ public class SearchTextService {
     ArticleRepository articleRepository;
 
     String url = "http://localhost:5000/nlpPost";
-
     RestTemplate restTemplate = new RestTemplate();
-    Map<String, String> map = new HashMap<>(); 
-       
+
     public List<Article> getAllArticles(){
         System.out.println("Database stuff: " + (List<Article>)articleRepository.findAll());
         return (List<Article>) articleRepository.findAll();
     }
-    /*
+
     public Map sendDataToSanic(String vueText) {
+
+        Map map = new HashMap<>();
         System.out.println("vue text proof: " + vueText);
-
         map.put("searchText", vueText);
-        map.put("dataBaseArticles", getAllArticles().toString());
+        map.put("dataBaseArticles", getAllArticles());
 
-        for (Map.Entry<String, String> e : map.entrySet())
-            System.out.println(e.getKey() + " " + e.getValue());
-
-        return restTemplate.postForObject(url, map, Map.class);
-    }
-    */
-
-    public String sendDataToSanic(String vueText){
-        return restTemplate.postForObject(url, vueText, String.class);
-        
+        Map test = restTemplate.postForObject(url, map, Map.class);
+        System.out.println("Tessssst: " + test);
+        return test;
     }
 
     public List<Article> matchSearchText(String searchText) {

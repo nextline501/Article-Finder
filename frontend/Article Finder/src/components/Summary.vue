@@ -6,16 +6,16 @@
         <button class="btn-dark">BACK</button>
       </router-link>
     </div>
-    <div class="col-9">
+    <div class="col-9" id="titleColumn">
       <h4>{{title}}</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-8">
+    <div class="col" id="summaryColumn">
       <p id="summaryArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ipsa veniam, ex officiis aliquam iste esse itaque provident optio aspernatur quia est temporibus quas eius obcaecati reprehenderit nemo odio deleniti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam in consequatur libero modi cumque, animi facilis et maxime ut corporis omnis praesentium? Quis vitae cupiditate voluptatibus, veniam dicta ex tenetur.</p>
     </div>
-    <div class="col-2">
-        <div class="row"><ReadingTips></ReadingTips></div>
+    <div class="col">
+        <div class="row" id="readingTips"><ReadingTips></ReadingTips></div>
     </div>
      <a href="https://www.diva-portal.org/smash/get/diva2:858003/FULLTEXT01.pdf" target="_blank"><div class="row-1"><button class="btn-dark">VIEW FULL VERSION</button></div></a>
   </div>
@@ -68,12 +68,14 @@ h4{
 
 button{
   margin-top: 20px;
+  font-size: 12px;
   border: 0px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
   padding: 15px;
   font-family: 'Open Sans', sans-serif;
   float: left;
+
 }
 
 button:hover{
@@ -85,23 +87,21 @@ button:hover{
 
 #summaryArea{
   margin-top: 20px;
+  margin-right: 60px;
   
 }
 
-div.col-1{
-  float: left;
-}
-
-.col-11{
-  padding: 0;
-}
-
-.col-8{
+#summaryColumn{
   text-align: left;
 }
 
 .nav-link{
   float: left;
+}
+
+#readingTips{
+  border-left: 1px solid lightgrey;
+  text-align: left;
 }
 
 .container-fluid{

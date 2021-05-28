@@ -1,9 +1,14 @@
 <template>
-<div>
+<div class ="container-fluid">
+<div class="col">
   <h4>Similar articles</h4>
   <ul>{{title}}</ul>
   <ul>{{title}}</ul>
-
+  <ul>{{title}}</ul>
+  <ul>{{title}}</ul>
+  <ul>{{title}}</ul>
+  <ul>{{title}}</ul>
+</div>
 </div>
 </template>
 
@@ -24,6 +29,10 @@ export default {
 
 h4{
   margin-top: 20px;
+}
+
+div{
+  margin-left: 50px;
 }
 
 </style>

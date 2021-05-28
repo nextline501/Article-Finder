@@ -89,7 +89,6 @@ button:hover{
   background-color: #00bfa5;
   box-shadow: 0px 15px 20px rgba(78, 78, 78, 0.4);
   color: #fff;
-  transform: translateY(-7px);
 }
 
 textarea{
@@ -97,8 +96,9 @@ textarea{
 
 }
 
-nav-linke{
+nav-link{
   text-decoration: none;
 }
+
 
 </style>

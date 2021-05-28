@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img src="/logo-dark.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Article Finder </a>
-    <span class="navbar-text">Matching Your Needs</span>
+    <span class="navbar-text">Research made easier</span>
   </div>
 </nav>
 </template>
@@ -32,6 +32,7 @@ nav{
   -webkit-box-shadow: 0 8px 6px -6px rgb(124, 124, 124);
   -moz-box-shadow: 0 8px 6px -6px rgb(153, 153, 153);
   box-shadow: 0 8px 6px -6px rgb(153, 153, 153);
+  margin-bottom: 20px;
 }
 
 img{

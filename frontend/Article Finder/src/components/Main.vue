@@ -9,13 +9,15 @@
         class="shadow p-3 mb-5 form-control rounded-10" rows="15" id="textArea" required v-model="textFeedModel.textFeed">
         </textarea>
 
-        <div class="d-grid gap-2">
 
+          <router-link to="/results" class="nav-link">
+        <div class="d-grid gap-2">
           <button id="postArticleText" @click="createArticleText" type="button" class=" btn btn-dark btn-rounded">
             SUBMIT
           </button>
-
         </div>
+          </router-link>
+
       </div>
     </div>
   </div>
@@ -66,7 +68,7 @@ label{
   font-size: 20px;
   margin-top: 30px;
   margin-bottom: 15px;
-  float: left;
+  float: center;
   font-weight: bold;
   font-family: 'Playfair Display', serif;
 }
@@ -93,6 +95,10 @@ button:hover{
 textarea{
   margin-top: 30px;
 
+}
+
+nav-linke{
+  text-decoration: none;
 }
 
 </style>

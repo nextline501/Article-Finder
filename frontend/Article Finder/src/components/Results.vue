@@ -46,7 +46,7 @@ export default {
 h4{
   margin-top: 30px;
   font-size: 22px;
-  float: left;
+  float: center;
   margin-bottom: 20px;
   font-weight: bold;
   font-family: 'Playfair Display', serif;

@@ -7,8 +7,8 @@ const state = {
             text: "test",
             tokentree: "Token",
             path: "Hard Coded Link",
-            title: "NLP grupp 3",
-            summary: "This is a summary"
+            title: "Article Title",
+            summary: "Article Summary"
         }
     ],  
 }

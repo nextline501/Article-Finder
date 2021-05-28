@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Main from './components/Main.vue'
 import Summary from './components/Summary.vue'
 import Results from './components/Results.vue'
+import ReadingTips from './components/ReadingTips.vue'
 
 // Routing to components
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
         path: '/results',
         name: 'Results',
         component: Results
+    },
+    {
+        path: '/summary',
+        name: 'ReadingTips',
+        component: ReadingTips
     },
 ]
 

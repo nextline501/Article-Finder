@@ -29,4 +29,9 @@ import Home from './components/Home.vue'
   color: #2c3e50;
   margin-top: 0px;
 }
+
+
+a.nav-link{
+  padding: 0px;
+}
 </style>

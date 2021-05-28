@@ -1,18 +1,19 @@
 <template>
+<div>
   <h4>Matches</h4>
   <table class="table">
   <thead class="shadow p-3 mb-5">
     <tr>
       <th scope="col"></th>
       <th scope="col">Title</th>
-      <th scope="col">Full version</th>
+      <th scope="col">Summary</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Article 1</td>
-      <td>PDF</td>
+      <td>{{articles[0].title}}</td>
+      <router-link to="/Summary" class="nav-link">{{articles[0].path}}</router-link>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -26,11 +27,18 @@
     </tr>
   </tbody>
 </table>
+</div>
 </template>
 
 <script>
 export default {
-  name: "Results"
+  name: "Results",
+
+  computed: {
+    articles(){
+      return this.$store.state.articles
+    }
+  }
 }
 </script>
 
@@ -49,5 +57,12 @@ thead{
   color: white;
 }
 
+.nav-link{
+  text-decoration: none;
+  color: rgb(0, 0, 238);
+}
+.nav-link:hover{
+  color:darkblue;
+}
 
 </style>

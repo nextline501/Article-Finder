@@ -1,9 +1,10 @@
 import spacy
 from spacy.matcher import PhraseMatcher
 
+# Models "lg, md, sm" matches 8 articles in around 5-6 s, but "trf" takes 157 s
 # nlp = spacy.load('en_core_web_sm')
 # nlp = spacy.load('en_core_web_md')
-nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_lg')  # run this when matching
 # nlp = spacy.load("en_core_web_trf")
 
 
@@ -16,7 +17,7 @@ def preprocessing_article(article):
         for ent in doc.ents:
             retokenizer.merge(doc[ent.start:ent.end])
 
-    doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+    doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct and token.pos_ in ['PROPN','NOUN','ADJ','VERB']]
 
     not_wanted = ['\n','\x02']
     list = []

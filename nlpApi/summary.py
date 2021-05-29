@@ -4,8 +4,8 @@ from heapq import nlargest
 
 # nlp = spacy.load('en_core_web_sm')
 # nlp = spacy.load('en_core_web_md')
-nlp = spacy.load('en_core_web_lg')
-# nlp = spacy.load('en_core_web_trf')
+# nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_trf')  # run this when adding tokentree and summary to DB, time doesn't matter that much
 
 def preprocessing_article(article):
 
@@ -15,7 +15,7 @@ def preprocessing_article(article):
         for ent in doc.ents:
             retokenizer.merge(doc[ent.start:ent.end])
 
-    doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+    doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct and token.pos_ in ['PROPN','NOUN','ADJ','VERB']]
 
     not_wanted = ['\n','\x02']
     list = []
@@ -64,7 +64,7 @@ def get_summary(article, limit):
     for token in doc:
         if (token.is_stop or token.is_punct):
             continue
-        if (token.pos_ in ['PROPN','NOUN','ADJ','VERB']):
+        if (token.pos_ in ['PROPN','NOUN','ADJ','VERB']):   # Maybe remove since already added in preprocessing_article!!
             keyword.append(token.text)
 
     # Ranking of keywords

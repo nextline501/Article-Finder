@@ -28,7 +28,7 @@ async def nlpPost(req):
 
     dictionary = {'result': result}
     end = time.time()
-    print("Total time in python: ",end - start)
+    print(f"Total time in python: {end - start:.2f} s")
 
     return res.json(dictionary)
 

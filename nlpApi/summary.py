@@ -31,10 +31,36 @@ def preprocessing_article(article):
 def get_summary(article, limit):
     # Remove line breaks
     clean_text = article.replace("\n", " ")
+    clean_text = clean_text.replace("\x02", "")
     # Transform to doc object for spacy
     doc = nlp(clean_text)
+    # Merge all different ents in to one token each, ex. Kalle Andersson becomes one token
+    with doc.retokenize() as retokenizer:
+        for ent in doc.ents:
+            retokenizer.merge(doc[ent.start:ent.end])
+    
+    # Gather proper sentences
+    # Some of doc.sents are not sentences that can be used to create a meaningful summary
+    # So we start with removing those from our base. We define a proper sentence as having at least one 
+    # noun and at least one verb.
+    comp_sentences = []
+    for sent in doc.sents:
+        if sent[0].is_title and sent[-1].is_punct:
+            contains_noun = 0
+            contains_verb = 0
+            for token in sent:
+                if token.pos_ in ["NOUN", "PROPN", "PRON"]:
+                    contains_noun += 1
+                elif token.pos_ == "VERB":
+                    contains_verb += 1
+            if contains_noun > 0 and contains_verb > 0:
+                 comp_sentences.append(sent)
+    #new_sents = [ word.text for word in comp_sentences]
+    #new_text = " ".join(new_sents)
+
     # Create list of keywords
     keyword =[]
+    doc = nlp(" ".join([word.text for word in comp_sentences]))
     for token in doc:
         if (token.is_stop or token.is_punct):
             continue

@@ -11,8 +11,6 @@
 </div>
 </template>
 
-
-
 <script>
 
 import Results from "./Results.vue"

@@ -6,25 +6,46 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Title</th>
-      <th scope="col">Summary</th>
+      <th scope="col">Link</th>
     </tr>
   </thead>
   <tbody>
+    
     <tr>
       <th scope="row">1</th>
-      <td>{{articles[0].title}}</td>
-      <router-link to="/Summary" class="nav-link">{{articles[0].path}}</router-link>
+      <td>{{ dataFromServer[0].article.title }}</td>
+      <td><a v-bind:href="''+dataFromServer[0].article.path+''">{{ dataFromServer[0].article.path }}</a></td>
+      <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
     </tr>
+
     <tr>
       <th scope="row">2</th>
-      <td>Article 2</td>
-      <td>DOCX</td>
+      <td>{{ dataFromServer[1].article.title }}</td>
+      <td><a v-bind:href="''+dataFromServer[1].article.path+''">{{ dataFromServer[1].article.path }}</a></td>
+      <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
     </tr>
+
     <tr>
       <th scope="row">3</th>
-      <td>Article 3</td>
-      <td>HTML</td>
+      <td>{{ dataFromServer[2].article.title }}</td>
+      <td><a v-bind:href="''+dataFromServer[2].article.path+''">{{ dataFromServer[2].article.path }}</a></td>
+      <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
     </tr>
+
+    <tr>
+      <th scope="row">4</th>
+      <td>{{ dataFromServer[3].article.title }}</td>
+      <td><a v-bind:href="''+dataFromServer[3].article.path+''">{{ dataFromServer[3].article.path }}</a></td>
+      <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
+    </tr>
+    
+    <tr>
+      <th scope="row">5</th>
+      <td>{{ dataFromServer[4].article.title }}</td>
+      <td><a v-bind:href="''+dataFromServer[4].article.path+''">{{ dataFromServer[4].article.path }}</a></td>
+      <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
+    </tr>
+
   </tbody>
 </table>
 </div>
@@ -38,7 +59,11 @@ export default {
     articles(){
       return this.$store.state.articles
     }
-  }
+  },
+
+  props: [
+    'dataFromServer'
+  ]
 }
 </script>
 

@@ -1,42 +1,50 @@
 <template>
 <div>
-    <div v-if="!submitted">
-
-      <div class="form-group">
-
-        <label for="textArea">Text</label>
-        <textarea placeholder="Input text that you want to match" 
+  <div v-if="!submitted">
+    <div class="form-group">
+      <label for="textArea">Text</label>
+      <textarea placeholder="Input text that you want to match" 
         class="shadow p-3 mb-5 form-control rounded-10" rows="15" id="textArea" required v-model="textFeedModel.textFeed">
-        </textarea>
+      </textarea>
 
-
-          <router-link to="/results" class="nav-link">
-        <div class="d-grid gap-2">
-          <button id="postArticleText" @click="createArticleText" type="button" class=" btn btn-dark btn-rounded">
-            SUBMIT
-          </button>
-        </div>
-          </router-link>
-
+      <div class="d-grid gap-2">
+        <button id="postArticleText" @click="createArticleText" type="button" class=" btn btn-dark btn-rounded">
+          SUBMIT
+        </button>
       </div>
     </div>
   </div>
-
+  <div v-if="submitted">
+    <div>
+      <!--<li><a v-bind:href="''+storeResponse+''">{{ storeResponse }}</a></li>-->
+      <Results :dataFromServer="storeResponse"/>
+    </div>
+  </div>
+  
+</div>
 </template>
 
 <script>
   import "../services/DataServices";
   import DataServices from '../services/DataServices';
+  import Results from '../components/Results.vue'
 
   export default {
+  components: { Results },
     name: "Main",
 
     data() {
       return {
         textFeedModel: {
           textFeed: "", 
-        }
+        }, 
+        submitted: false,
+        storeResponse: [],
       }
+    },
+
+    componets: {
+      Results
     },
 
     methods: {
@@ -48,10 +56,11 @@
         
         DataServices.sendArticleText(articleData.searchText).then(response => {
           console.log(response);
-        })
+          this.storeResponse = response.data.result;
+          this.submitted = true; 
+        });
       }
     }, 
-
   }
 </script>
 

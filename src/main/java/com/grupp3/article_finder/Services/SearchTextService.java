@@ -21,7 +21,7 @@ public class SearchTextService {
     RestTemplate restTemplate = new RestTemplate();
 
     public List<Article> getAllArticles(){
-        System.out.println("Database stuff: " + (List<Article>)articleRepository.findAll());
+        //System.out.println("Database stuff: " + (List<Article>)articleRepository.findAll());
         return (List<Article>) articleRepository.findAll();
     }
 
@@ -37,7 +37,7 @@ public class SearchTextService {
         return test;
     }
 
-    public List<Article> matchSearchText(String searchText) {
+    public Map matchSearchText(String searchText) {
 
         //Get string from vue
         //-> detta kan ske i SearchTextService.java 
@@ -52,8 +52,8 @@ public class SearchTextService {
         
         //Detta är det sissta som ska ske, controllern skickar tillbaka listan till Vue. 
 
-        sendDataToSanic(searchText);
+        Map processedData = sendDataToSanic(searchText);
 
-        return null;
+        return processedData;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController; 
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class SearchTextController {
@@ -19,7 +20,7 @@ public class SearchTextController {
     
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/data")
-    public List<Article> matchSearchText(@RequestBody String searchText){
+    public Map matchSearchText(@RequestBody String searchText){
         System.out.println("Controll: " + searchText);
         return searchTextService.matchSearchText(searchText);
     }

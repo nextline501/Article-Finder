@@ -6,9 +6,10 @@ from spacy.matcher import PhraseMatcher
 # nlp = spacy.load('en_core_web_md')
 nlp = spacy.load('en_core_web_lg')  # run this when matching
 # nlp = spacy.load("en_core_web_trf")
+# print(nlp.pipe_names) ---> ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 
 
-def preprocessing_article(article):
+def preprocessing(article):
 
     doc = nlp(article)
 
@@ -38,7 +39,9 @@ def find_matches(sample, article):
     article_tokentree = article['tokentree']
 
     # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
-    doc = nlp(article_tokentree)
+    doc = ""
+    with nlp.disable_pipes("tagger", "parser", "ner","attribute_ruler", "lemmatizer"):
+        doc = nlp(article_tokentree)
 
     char_matched= matcher(doc)
     match_text = []
@@ -55,7 +58,7 @@ def find_matches(sample, article):
 
 def match_rank_articles(search_text, article_list):
 
-    search_text_doc = preprocessing_article(search_text)
+    search_text_doc = preprocessing(search_text)
     match_results = []
 
     for article in article_list:
@@ -67,11 +70,19 @@ def match_rank_articles(search_text, article_list):
 
     print(f"\nBest matching article: {match_results[0]['percent_match']} %   Nbr of articles matched: {len(match_results)}")
 
-    # Return the 5 best matches
-    if len(match_results) > 5:
-        return match_results[0:5]
+    match_results_filtered = []
+
+    for match in match_results:
+        if match['percent_match']> 0:
+            print("Inside match results", match['percent_match'])
+            match_results_filtered.append(match)
+
+    if len(match_results_filtered) > 5:
+        return match_results_filtered[0:5]
     else:
-        return match_results
+        print("Lenght of result: ", len(match_results_filtered))
+        return match_results_filtered
+
 
 def myFunc(e):
     return e['percent_match']

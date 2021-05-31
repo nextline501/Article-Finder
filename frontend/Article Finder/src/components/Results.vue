@@ -3,7 +3,7 @@
   <h4>Matches</h4>
   <div> 
     <template v-if="!dataFromServer.length">
-      <h1>No matches found</h1>
+      <p>No matches found on your search</p>
     </template>
     <template v-else>
       <table class="table">
@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(article,i) in dataFromServer" v-bind:key="i">
+          <tr v-for="(article,i) in dataFromServer" :key="i">
             <th scope="row">{{i+1}}</th>
             <td>{{dataFromServer[i].article.title}}</td>
             <td><a v-bind:href="''+dataFromServer[i].article.path+''">{{dataFromServer[i].article.path}}</a></td>

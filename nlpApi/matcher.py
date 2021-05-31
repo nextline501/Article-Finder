@@ -80,7 +80,7 @@ def match_rank_articles(search_text, article_list):
     if len(match_results_filtered) > 5:
         return match_results_filtered[0:5]
     else:
-        print("Lenght of result!!!!!!!!", len(match_results_filtered))
+        print("Lenght of result: ", len(match_results_filtered))
         return match_results_filtered
 
 

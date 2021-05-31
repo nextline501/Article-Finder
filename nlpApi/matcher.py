@@ -9,7 +9,7 @@ nlp = spacy.load('en_core_web_lg')  # run this when matching
 # print(nlp.pipe_names) ---> ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 
 
-def preprocessing_article(article):
+def preprocessing(article):
 
     doc = nlp(article)
 
@@ -58,7 +58,7 @@ def find_matches(sample, article):
 
 def match_rank_articles(search_text, article_list):
 
-    search_text_doc = preprocessing_article(search_text)
+    search_text_doc = preprocessing(search_text)
     match_results = []
 
     for article in article_list:
@@ -70,11 +70,19 @@ def match_rank_articles(search_text, article_list):
 
     print(f"\nBest matching article: {match_results[0]['percent_match']} %   Nbr of articles matched: {len(match_results)}")
 
-    # Return the 5 best matches
-    if len(match_results) > 5:
-        return match_results[0:5]
+    match_results_filtered = []
+
+    for match in match_results:
+        if match['percent_match']> 0:
+            print("Inside match results", match['percent_match'])
+            match_results_filtered.append(match)
+
+    if len(match_results_filtered) > 5:
+        return match_results_filtered[0:5]
     else:
-        return match_results
+        print("Lenght of result!!!!!!!!", len(match_results_filtered))
+        return match_results_filtered
+
 
 def myFunc(e):
     return e['percent_match']

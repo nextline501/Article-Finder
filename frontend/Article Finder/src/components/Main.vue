@@ -8,9 +8,15 @@
       </textarea>
 
       <div class="d-grid gap-2">
-        <button id="postArticleText" @click="createArticleText" type="button" class=" btn btn-dark btn-rounded">
+        <button v-if= "!showSpinner" id="postArticleText" @click="createArticleText" class="btn btn-dark btn-rounded" type="button">
           SUBMIT
         </button>
+
+        <button v-else id="postArticleText" class="btn btn-dark btn-rounded"  type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Processing...
+        </button>
+
       </div>
     </div>
   </div>
@@ -33,13 +39,15 @@
   components: { Results },
     name: "Main",
 
+
     data() {
       return {
         textFeedModel: {
           textFeed: "", 
         }, 
-        submitted: false,
         storeResponse: [],
+        submitted: false,
+        showSpinner: false
       }
     },
 
@@ -50,6 +58,7 @@
     methods: {
       createArticleText(){
         
+        this.showSpinner = true 
         let articleData = {
           searchText: this.textFeedModel.textFeed,
         }
@@ -57,7 +66,7 @@
         DataServices.sendArticleText(articleData.searchText).then(response => {
           console.log(response);
           this.storeResponse = response.data.result;
-          this.submitted = true; 
+          this.submitted = true
         });
       }
     }, 

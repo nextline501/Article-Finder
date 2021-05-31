@@ -62,14 +62,17 @@
         let articleData = {
           searchText: this.textFeedModel.textFeed,
         }
-        
+
         DataServices.sendArticleText(articleData.searchText).then(response => {
-          console.log(response);
+          console.log(response)
           this.storeResponse = response.data.result;
+          // Data will be available later in store, but not direct for render in this event
+          this.$store.commit("setArticles", response.data.result)
           this.submitted = true
         });
+
       }
-    }, 
+    },
   }
 </script>
 

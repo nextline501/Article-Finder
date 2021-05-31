@@ -1,28 +1,30 @@
 <template>
 <div>
   <h4>Matches</h4>
-  <table class="table">
-  <thead class="shadow p-3 mb-5">
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Title</th>
-      <th scope="col">Link</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-
-    <tr v-for="(article,i) in dataFromServer" v-bind:key="i">
-      <th scope="row">{{i+1}}</th>
-      <td>{{dataFromServer[i].article.title}}</td>
-      <td><a v-bind:href="''+dataFromServer[i].article.path+''">{{dataFromServer[i].article.path}}</a></td>
-      <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
-    </tr>
-
-    
-
-  </tbody>
-</table>
+  <div> 
+    <template v-if="!dataFromServer.length">
+      <h1>No matches found</h1>
+    </template>
+    <template v-else>
+      <table class="table">
+        <thead class="shadow p-3 mb-5">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(article,i) in dataFromServer" v-bind:key="i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{dataFromServer[i].article.title}}</td>
+            <td><a v-bind:href="''+dataFromServer[i].article.path+''">{{dataFromServer[i].article.path}}</a></td>
+            <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
+          </tr>
+        </tbody>
+      </table>
+    </template>
+  </div>
 </div>
 </template>
 

@@ -6,6 +6,7 @@ from spacy.matcher import PhraseMatcher
 # nlp = spacy.load('en_core_web_md')
 nlp = spacy.load('en_core_web_lg')  # run this when matching
 # nlp = spacy.load("en_core_web_trf")
+# print(nlp.pipe_names) ---> ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 
 
 def preprocessing_article(article):
@@ -38,7 +39,9 @@ def find_matches(sample, article):
     article_tokentree = article['tokentree']
 
     # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
-    doc = nlp(article_tokentree)
+    doc = ""
+    with nlp.disable_pipes("tagger", "parser", "ner","attribute_ruler", "lemmatizer"):
+        doc = nlp(article_tokentree)
 
     char_matched= matcher(doc)
     match_text = []

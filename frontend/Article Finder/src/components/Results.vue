@@ -17,9 +17,11 @@
         <tbody>
           <tr v-for="(article,i) in dataFromServer" :key="i">
             <th scope="row">{{i+1}}</th>
-            <td>{{dataFromServer[i].article.title}}</td>
+            <td>
+              <router-link to="/Summary" class="nav-link">{{ dataFromServer[i].article.title }}</router-link>
+            </td>
             <td><a v-bind:href="''+dataFromServer[i].article.path+''">{{dataFromServer[i].article.path}}</a></td>
-            <!--<router-link to="/Summary" class="nav-link">{{ dataFromServer[0].article.path }}</router-link>-->
+            <!---->
           </tr>
         </tbody>
       </table>

@@ -59,9 +59,9 @@ public class SearchTextService {
     }
 
     public Map sendDataToSanicWithArticle(String myId) {
-        // Change later !!!
-        int id = 1;
-        System.out.println("vue text proof: " + id);
+
+        int id = Integer.parseInt(myId);
+//        System.out.println("vue text proof: " + id);
 
         List<Article> articleList = getAllArticles();
         String tokenTree = "Not changed";
@@ -86,7 +86,6 @@ public class SearchTextService {
 
     public Map matchSimilarArticles(String id) {
         Map processedData = sendDataToSanicWithArticle(id);
-        // Change later !!!
-        return null;
+        return processedData;
     }
 }

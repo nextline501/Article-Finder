@@ -31,6 +31,7 @@ public class SearchTextService {
         System.out.println("vue text proof: " + vueText);
         map.put("searchText", vueText);
         map.put("dataBaseArticles", getAllArticles());
+        map.put("typeOfSearch", 1);
 
         Map test = restTemplate.postForObject(url, map, Map.class);
         System.out.println("Tessssst: " + test);
@@ -76,7 +77,7 @@ public class SearchTextService {
 //        System.out.println("Tokentree: " + tokenTree);
         map.put("searchText", tokenTree);
         map.put("dataBaseArticles", getAllArticles());
-//        map.put("typeOfSearch", 2);
+        map.put("typeOfSearch", 2);
 
         Map test = restTemplate.postForObject(url, map, Map.class);
         System.out.println("Tessssst: " + test);

@@ -24,11 +24,13 @@
       </table>
     </template>
   </div>
-  <div> 
+  <div>
 </div>
 </template>
 
 <script>
+import DataServices from '../services/DataServices';
+
 export default {
   name: "Results",
 
@@ -40,7 +42,17 @@ export default {
   methods: {
     setCurrentArticle(article){
       this.$store.commit('setCurrentArticle', article);
-    }
+      this.sendArticleId(article)
+    },
+    sendArticleId(article){
+      DataServices.sendArticleId(article.id.toString()).then(response => {
+        console.log(response)
+        this.storeResponse = response.data.result;
+        // This can't be used for render since it will take a couple of seconds to
+        // for data to come. Maybe with actions (async ability) it will handle the delay??
+        this.$store.commit("setSimilarArticles", response.data.result)
+      });
+    },
   },
 
   props: [

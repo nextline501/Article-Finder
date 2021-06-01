@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container">
   <div v-if="!submitted">
     <div class="form-group" id="textAreaForm">
       <label for="textArea">Match</label>
@@ -84,12 +84,9 @@
 }
 
 label{
-  font-size: 20px;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  float: left;
+  font-size: 28px;
+
   font-weight: bold;
-  font-family: 'Open Sans', serif;
 }
 
 button{

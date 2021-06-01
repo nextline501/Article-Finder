@@ -43,8 +43,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 h4{
   float: left;
   margin-top: 40px;
@@ -74,13 +72,14 @@ button:hover{
 }
 
 #summaryArea{
-  margin-top: 20px;
-  margin-right: 60px;
-
+  font-size: 20px;
 }
 
 #summaryColumn{
   text-align: left;
+  border-bottom: 1px solid rgb(180, 180, 180);
+  border-top: 1px solid rgb(180, 180, 180);
+  padding: 20px 0 20px 0;
 }
 
 #titleColumn{
@@ -94,17 +93,5 @@ button:hover{
 #readingTips{
   text-align: left;
 }
-
-#summaryContainer{
-  margin: 20px;
-}
-
-
-
-
-
-
-
-
 
 </style>

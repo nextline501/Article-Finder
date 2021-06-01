@@ -1,21 +1,16 @@
 import { createStore } from 'vuex'
 
 const state = {
-    articles: [
-        {
-            id: "1",
-            text: "test",
-            tokentree: "Token",
-            path: "Hard Coded Link",
-            title: "Article Title",
-            summary: "Article Summary"
-        }
-    ],  
+    articles: [], 
+    currentArticle: {}
 }
 const mutations = {
 
     setArticles(state, articles){
         state.articles = articles
+    },
+    setCurrentArticle(state, article){
+        state.currentArticle = article
     }
 }
 

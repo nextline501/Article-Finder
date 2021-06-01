@@ -31,6 +31,7 @@ public class SearchTextService {
         System.out.println("vue text proof: " + vueText);
         map.put("searchText", vueText);
         map.put("dataBaseArticles", getAllArticles());
+        map.put("typeOfSearch", 1);
 
         Map test = restTemplate.postForObject(url, map, Map.class);
         System.out.println("Tessssst: " + test);
@@ -54,6 +55,37 @@ public class SearchTextService {
 
         Map processedData = sendDataToSanic(searchText);
 
+        return processedData;
+    }
+
+    public Map sendDataToSanicWithArticle(String myId) {
+
+        int id = Integer.parseInt(myId);
+//        System.out.println("vue text proof: " + id);
+
+        List<Article> articleList = getAllArticles();
+        String tokenTree = "Not changed";
+
+        for (int i = 0; i < articleList.size(); i++) {
+            if(articleList.get(i).getId() == id){
+                System.out.println("Inside loop");
+                tokenTree = articleList.get(i).getTokentree();
+            }
+        }
+
+        Map map = new HashMap<>();
+//        System.out.println("Tokentree: " + tokenTree);
+        map.put("searchText", tokenTree);
+        map.put("dataBaseArticles", getAllArticles());
+        map.put("typeOfSearch", 2);
+
+        Map test = restTemplate.postForObject(url, map, Map.class);
+        System.out.println("Tessssst: " + test);
+        return test;
+    }
+
+    public Map matchSimilarArticles(String id) {
+        Map processedData = sendDataToSanicWithArticle(id);
         return processedData;
     }
 }

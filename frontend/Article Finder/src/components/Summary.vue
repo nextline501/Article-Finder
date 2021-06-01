@@ -7,12 +7,12 @@
       </router-link>
     </div>
     <div class="col-9" id="titleColumn">
-      <h4>{{title}}</h4>
+      <h4>{{currentArticle.title}}</h4>
     </div>
   </div>
   <div class="row">
     <div class="col" id="summaryColumn">
-      <p id="summaryArea">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ipsa veniam, ex officiis aliquam iste esse itaque provident optio aspernatur quia est temporibus quas eius obcaecati reprehenderit nemo odio deleniti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam in consequatur libero modi cumque, animi facilis et maxime ut corporis omnis praesentium? Quis vitae cupiditate voluptatibus, veniam dicta ex tenetur.</p>
+        <p id="summaryArea"> {{currentArticle. summary}}  </p>
     </div>
     <div class="col">
         <div class="row" id="readingTips"><ReadingTips></ReadingTips></div>
@@ -32,12 +32,9 @@ export default {
   name: "Summary",
 
   computed: {
-    summary(){
-      return this.$store.state.articles[0].summary
+    currentArticle(){
+      return this.$store.state.currentArticle;
     },
-    title(){
-      return this.$store.state.articles[0].title
-    }
   },
   
 

@@ -18,7 +18,7 @@
           <tr v-for="(article,i) in dataFromServer" :key="i">
             <th scope="row">{{i+1}}</th>
             <td>
-              <router-link to="/Summary" class="nav-link">{{ dataFromServer[i].article.title }}</router-link>
+              <router-link to="/Summary" @click="setCurrentArticle(dataFromServer[i].article)" class="nav-link">{{ dataFromServer[i].article.title }}</router-link>
             </td>
             <td><a v-bind:href="''+dataFromServer[i].article.path+''">{{dataFromServer[i].article.path}}</a></td>
             <!---->
@@ -37,6 +37,11 @@ export default {
   computed: {
     articles(){
       return this.$store.state.articles
+    }
+  },
+  methods: {
+    setCurrentArticle(article){
+      this.$store.commit('setCurrentArticle', article);
     }
   },
 

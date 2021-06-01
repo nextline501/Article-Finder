@@ -1,25 +1,18 @@
 <template>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <router-link to="/results" class="nav-link">
-        <button class="btn-dark">BACK</button>
-      </router-link>
-    </div>
-    <div class="col-9" id="titleColumn">
+<div class="container" id="summaryContainer">
+  <div class="col">
+    <div class="row" id="titleColumn">
       <h4>{{currentArticle.title}}</h4>
     </div>
-  </div>
-  <div class="row">
     <div class="col" id="summaryColumn">
         <p id="summaryArea"> {{currentArticle. summary}}  </p>
     </div>
-    <div class="col">
-        <div class="row" id="readingTips"><ReadingTips></ReadingTips></div>
-    </div>
-     <a href="https://www.diva-portal.org/smash/get/diva2:858003/FULLTEXT01.pdf" target="_blank"><div class="row-1"><button class="btn-dark">VIEW FULL VERSION</button></div></a>
   </div>
-</div>
+    <!-- <div class="col">
+      <div class="row" id="readingTips"><ReadingTips></ReadingTips></div> 
+    </div>-->
+     <div class="row-1"><a :href="currentArticle.path" target="_blank"><button class="btn-dark">VIEW FULL VERSION</button></a></div>
+  </div>
 
 
 
@@ -37,7 +30,6 @@ export default {
     },
   },
   
-
   methods: {
     getArticleData(){
       DataServices.getSummarizedArticle().then(response => {
@@ -59,7 +51,7 @@ h4{
   float: left;
   margin-top: 40px;
   font-size: 30px;
-  
+  font-weight: bold;
 }
 
 
@@ -72,6 +64,7 @@ button{
   padding: 15px;
   font-family: 'Open Sans', sans-serif;
   float: left;
+  margin-bottom: 20px;
 
 }
 
@@ -85,10 +78,14 @@ button:hover{
 #summaryArea{
   margin-top: 20px;
   margin-right: 60px;
-  
+
 }
 
 #summaryColumn{
+  text-align: left;
+}
+
+#titleColumn{
   text-align: left;
 }
 
@@ -97,13 +94,13 @@ button:hover{
 }
 
 #readingTips{
-  border-left: 1px solid lightgrey;
   text-align: left;
 }
 
-.container-fluid{
-  margin: 30px;
+#summaryContainer{
+  margin: 20px;
 }
+
 
 
 

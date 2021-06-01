@@ -20,7 +20,7 @@
             <td>
               <router-link to="/Summary" @click="setCurrentArticle(dataFromServer[i].article)" class="nav-link">{{ dataFromServer[i].article.title }}</router-link>
             </td>
-            <td><a v-bind:href="''+dataFromServer[i].article.path+''">{{dataFromServer[i].article.path}}</a></td>
+            <td><a class="nav-link" v-bind:href="''+dataFromServer[i].article.path+''">FULL VERSION</a></td>
             <!---->
           </tr>
         </tbody>
@@ -68,10 +68,14 @@ thead{
 
 .nav-link{
   text-decoration: none;
-  color: rgb(0, 0, 238);
+  color: black;
 }
 .nav-link:hover{
-  color:darkblue;
+  color:#00bfa5;
+}
+
+table{
+  text-align: left;
 }
 
 </style>

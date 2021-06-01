@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 const state = {
     articles: [], 
-    currentArticle: {}
+    currentArticle: {},
+    similarArticles: []
 }
 const mutations = {
 
@@ -11,7 +12,11 @@ const mutations = {
     },
     setCurrentArticle(state, article){
         state.currentArticle = article
+    },
+    setSimilarArticles(state, similarArticles){
+        state.similarArticles = similarArticles
     }
+
 }
 
 const actions = {

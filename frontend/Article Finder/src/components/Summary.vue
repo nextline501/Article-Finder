@@ -1,6 +1,9 @@
 <template>
 <div class="container" id="summaryContainer">
   <div class="col">
+    <router-link to="/matches">
+      <button id="BackBtn" class="Btn">Back</button>
+    </router-link>
     <div class="row" id="titleColumn">
       <h4>{{currentArticle.title}}</h4>
     </div>

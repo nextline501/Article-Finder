@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // Pages
 import Main from './components/Main.vue'
 import Summary from './components/Summary.vue'
-import Results from './components/Results.vue'
+import Matches from './components/Matches.vue'
 import ReadingTips from './components/ReadingTips.vue'
 
 // Routing to components
@@ -20,9 +20,9 @@ const routes = [
         component: Summary
     },
     {
-        path: '/results',
-        name: 'Results',
-        component: Results
+        path: '/matches',
+        name: 'matches',
+        component: Matches
     },
     {
         path: '/summary',

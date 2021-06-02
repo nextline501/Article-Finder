@@ -25,14 +25,11 @@
                   </svg> 
                   VIEW FULL VERSION
                 </button></a></td>
-            <!---->
           </tr>
         </tbody>
       </table>
     </template>
   </div>
-  <div> 
-</div>
 </template>
 
 <script>
@@ -57,7 +54,7 @@ export default {
         this.storeResponse = response.data.result;
         // This can't be used for render since it will take a couple of seconds to
         // for data to come. Maybe with actions (async ability) it will handle the delay??
-        this.$store.commit("setSimilarArticles", response.data.result)
+        this.$store.commit('setSimilarArticles', response.data.result)
       });
     },
   },

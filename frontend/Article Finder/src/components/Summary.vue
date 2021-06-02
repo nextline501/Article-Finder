@@ -35,10 +35,18 @@ export default {
         this.SummarizedArticle = response.data;
       })
     },
+    scrollToBeginning(){
+      let resultEl = document.getElementById("summaryContainer");
+      resultEl.scrollIntoView();
+    },
   },
   components: {
     ReadingTips
+  },
+  updated(){
+    this.scrollToBeginning();
   }
+
 }
 </script>
 

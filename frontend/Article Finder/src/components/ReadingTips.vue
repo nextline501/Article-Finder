@@ -1,13 +1,20 @@
 <template>
   <div class ="container-fluid">
-    <div class="col">
-      <h4>Similar articles</h4>
-      <div v-for="(article,i) in similarArticles" :key="i">
-        <router-link to="/Summary" @click="setCurrentArticle(similarArticles[i].article)" class="nav-link">
-          {{similarArticles[i].article.title}}
-        </router-link>
-      </div>
-    </div>
+    <h4>Similar articles</h4>
+    <table class="table" id="resultsTable">
+      <tbody>
+        <div class="col">
+          <div v-for="(article,i) in similarArticles" :key="i">
+            <th scope="row">{{i+1+"."}}</th>
+            <td>
+              <router-link to="/Summary" @click="setCurrentArticle(similarArticles[i].article)" class="nav-link">
+              {{similarArticles[i].article.title}}
+              </router-link>
+            </td>
+          </div>
+        </div>
+      </tbody>
+    </table>
   </div>
 </template>
 

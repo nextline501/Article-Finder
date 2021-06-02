@@ -2,7 +2,7 @@
 <div class="container" id="summaryContainer">
   <div class="col">
     <router-link to="/matches">
-      <button id="BackBtn" class="Btn">Back</button>
+      <button id="BackBtn" class="Btn">Result Page</button>
     </router-link>
     <div class="row" id="titleColumn">
       <h4>{{currentArticle.title}}</h4>

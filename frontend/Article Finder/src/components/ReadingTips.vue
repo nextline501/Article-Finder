@@ -1,20 +1,30 @@
 <template>
   <div class ="container-fluid">
     <h4>Similar articles</h4>
-    <table class="table" id="resultsTable">
-      <tbody>
-        <div class="col">
-          <div v-for="(article,i) in similarArticles" :key="i">
-            <th scope="row">{{i+1+"."}}</th>
-            <td>
-              <router-link to="/Summary" @click="setCurrentArticle(similarArticles[i].article)" class="nav-link">
-              {{similarArticles[i].article.title}}
-              </router-link>
-            </td>
+    <!-- what happens if there are no similar articles is not fixed yet. Code below does not work if we get empty list back -->
+    <template v-if="!similarArticles.length">
+
+        <div class="d-flex align-items-center">
+          <strong>Loading...</strong>
+          <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>      
+    </template>
+    <template v-else>
+      <table class="table" id="resultsTable">
+        <tbody>
+          <div class="col">
+            <div v-for="(article,i) in similarArticles" :key="i">
+              <th scope="row">{{i+1+"."}}</th>
+              <td>
+                <router-link to="/Summary" @click="setCurrentArticle(similarArticles[i].article)" class="nav-link">
+                {{similarArticles[i].article.title}}
+                </router-link>
+              </td>
+            </div>
           </div>
-        </div>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </template>
   </div>
 </template>
 
@@ -23,7 +33,7 @@ import DataServices from '../services/DataServices';
 
 export default {
     name: "ReadingTips",
-
+    
     computed: {
       similarArticles(){
         return this.$store.state.similarArticles;

@@ -24,4 +24,11 @@ public class SearchTextController {
         System.out.println("Controll: " + searchText);
         return searchTextService.matchSearchText(searchText);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/api/read")
+    public Map matchSimilarArticles(@RequestBody String id){
+//        System.out.println("Controll: " + searchText);
+        return searchTextService.matchSimilarArticles(id);
+    }
 }

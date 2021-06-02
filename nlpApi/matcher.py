@@ -74,7 +74,7 @@ def match_rank_articles(search_text, article_list):
 
     for match in match_results:
         if match['percent_match']> 0:
-            print("Inside match results", match['percent_match'])
+            # print("Inside match results", match['percent_match'])
             match_results_filtered.append(match)
 
     if len(match_results_filtered) > 5:
@@ -83,6 +83,45 @@ def match_rank_articles(search_text, article_list):
         print("Lenght of result: ", len(match_results_filtered))
         return match_results_filtered
 
+
+def match_rank_articles2(search_text, article_list):
+
+    # Matcher demands parameter as doc format, not possible to take doc_cleaned direct, must make it a doc once again
+    doc = ""
+    with nlp.disable_pipes("tagger", "parser", "ner","attribute_ruler", "lemmatizer"):
+        doc = nlp(search_text)
+
+    list = []
+
+    for token in doc:
+        list.append(token.text)
+
+    match_results = []
+
+    for article in article_list:
+        match = find_matches(list, article)
+        match_results.append(match)
+
+    #Sort from highest percent_match to lowest
+    match_results.sort(key=myFunc, reverse=True)
+
+    print(f"\nBest matching article: {match_results[0]['percent_match']} %   Nbr of articles matched: {len(match_results)}")
+
+    match_results_filtered = []
+
+    for match in match_results:
+        if match['percent_match']> 0:
+            # print("Inside match results", match['percent_match'])
+            match_results_filtered.append(match)
+
+    if len(match_results_filtered) > 0:
+        match_results_filtered.pop(0)
+
+    if len(match_results_filtered) > 5:
+        return match_results_filtered[0:5]
+    else:
+        print("Lenght of result: ", len(match_results_filtered))
+        return match_results_filtered
 
 def myFunc(e):
     return e['percent_match']

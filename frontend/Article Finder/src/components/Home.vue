@@ -1,14 +1,7 @@
 <template>
-  <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
+  <div class="container">
       <Main></Main>
     </div>
-    <div class="col-sm">
-      <Results ></Results>
-    </div>
-  </div>
-</div>
 </template>
 
 <script>

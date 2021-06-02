@@ -4,6 +4,10 @@ class DataService {
   sendArticleText(data) {
     return http.post("/data", data)
   }
+  
+  sendArticleId(id) {
+    return http.post("/read", id)
+  }
 
   get(id) {
     return http.get(`/tutorials/${id}`);

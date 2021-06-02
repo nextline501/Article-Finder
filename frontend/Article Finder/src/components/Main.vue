@@ -1,8 +1,8 @@
 <template>
-<div>
+<div class="container">
   <div v-if="!submitted">
-    <div class="form-group">
-      <label for="textArea">Text</label>
+    <div class="form-group" id="textAreaForm">
+      <label for="textArea">Match</label>
       <textarea placeholder="Input text that you want to match" 
         class="shadow p-3 mb-5 form-control rounded-10" rows="15" id="textArea" required v-model="textFeedModel.textFeed">
       </textarea>
@@ -78,20 +78,15 @@
 
 <style scoped>
 
-.form-group{
-  width: 90%;
-  float: none;
-  margin-left: 20px;
+#textAreaForm{
+  margin: 20px;
   border: 0;
 }
 
 label{
-  font-size: 20px;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  float: center;
+  font-size: 28px;
+
   font-weight: bold;
-  font-family: 'Playfair Display', serif;
 }
 
 button{
@@ -120,6 +115,7 @@ textarea{
 nav-link{
   text-decoration: none;
 }
+
 
 
 </style>

@@ -5,6 +5,7 @@ import Main from './components/Main.vue'
 import Summary from './components/Summary.vue'
 import Matches from './components/Matches.vue'
 import ReadingTips from './components/ReadingTips.vue'
+import Admin from './components/Admin.vue'
 
 // Routing to components
 const routes = [
@@ -28,6 +29,11 @@ const routes = [
         path: '/summary',
         name: 'ReadingTips',
         component: ReadingTips
+    },
+    {
+        path: '/admin',
+        name: 'Admin',
+        component: Admin
     },
 ]
 

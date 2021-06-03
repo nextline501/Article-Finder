@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img src="/logo-dark.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Article Finder </a>
-    <span class="navbar-text">Research made easier</span>
+    <span class="navbar-text">Login</span>
   </div>
 </nav>
 </template>

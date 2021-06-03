@@ -1,5 +1,5 @@
 <template>
-  <div class ="container-fluid">
+  <div class ="container">
     <h4>Similar articles</h4>
     <!-- what happens if there are no similar articles is not fixed yet. Code below does not work if we get empty list back -->
     <template v-if="!similarArticles.length">
@@ -63,10 +63,20 @@ export default {
 
 h4{
   margin-top: 20px;
+  border-bottom: 1px solid rgb(180, 180, 180);
 }
 
 div{
   margin-left: 50px;
+}
+
+.nav-link{
+  text-decoration: none;
+  color: black;
+}
+.nav-link:hover{
+  color:#00bfa5;
+  text-decoration: underline;
 }
 
 </style>

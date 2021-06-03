@@ -1,17 +1,18 @@
 <template>
 <div class="container" id="summaryContainer">
 
-  <div class="col">
+  <div class="row">
     <router-link to="/matches">
-      <button id="BackBtn" class="Btn">Result Page</button>
+      <button id="BackBtn" class="btn-dark">← RESULT PAGE</button>
     </router-link>
+  </div>
     <div class="row" id="titleColumn">
       <h4>{{currentArticle.title}}</h4>
     </div>
     <div class="col" id="summaryColumn">
         <p id="summaryArea"> {{currentArticle.summary}}  </p>
     </div>
-  </div>
+ 
 
   <div class="row">
 
@@ -25,14 +26,16 @@
             </svg> VIEW FULL VERSION
           </button>
         </a>
+        
       </div>
-    </div>
-
-    <div class="row">
+          <div class="row">
           <div class="row" id="readingTips">
             <ReadingTips></ReadingTips>
           </div> 
     </div>
+    </div>
+
+
   </div>
 </div>
 
@@ -114,7 +117,7 @@ button:hover{
 }
 
 #readingTips{
-  text-align: left;
+
 }
 
 </style>

@@ -8,15 +8,6 @@ from pdf_to_string import pdf_to_string_process
 # instantiate the app object
 app = Sanic("app") # __name__
 
-# API endpoint
-@app.get('/nlpGet')
-async def nlpGet(req):
-    
-    def stringTest(input):
-        myString = input
-        return myString
-    
-    return res.json({ "message": stringTest("yolo1nlp23232") })
 
 @app.post('/nlpPost')
 async def nlpPost(req):

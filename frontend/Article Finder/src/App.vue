@@ -1,11 +1,11 @@
 App
 
 <template>
-<div>
+<header>
   <Navbar></Navbar>
   <router-view></router-view>
   
-</div>  
+</header>  
 </template>
 
 <script setup>
@@ -30,10 +30,8 @@ import Home from './components/Home.vue'
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000000;
-  margin-top: 0px;
+  margin-top: 80px;
 }
-
-
 
 a.nav-link{
   padding: 0px;

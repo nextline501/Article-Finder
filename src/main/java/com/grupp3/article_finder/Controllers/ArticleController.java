@@ -24,6 +24,7 @@ public class ArticleController {
         return articleService.getArticleById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/articles")
     public Article addNewArticle(@RequestBody Article article){
         return articleService.addNewArticle(article);

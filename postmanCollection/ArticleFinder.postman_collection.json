@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "5092f663-e4d8-4a13-802a-4cc43217ad6f",
+		"name": "ArticleFinder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PdfToDb",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"\",\r\n    \"tokentree\": \"\",\r\n    \"path\": \"https://arxiv.org/pdf/1309.0238.pdf\",\r\n    \"title\": \"Machine learning with OPA20\",\r\n    \"summary\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

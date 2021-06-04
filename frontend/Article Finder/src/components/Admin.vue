@@ -155,6 +155,11 @@ h4{
   border-radius: 0px;
 }
 
+label{
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .form-control:focus {
   border-color: #000000;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.0);

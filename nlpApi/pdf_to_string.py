@@ -38,6 +38,7 @@ def pdf_to_string():
 
     text = output_string.getvalue()
     text = text.replace("\n", " ")
+    text = text.replace("<", "&lt;")
     print(text)
     return text
 

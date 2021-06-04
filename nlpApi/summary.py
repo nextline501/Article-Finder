@@ -87,4 +87,5 @@ def get_summary(article, limit):
     # Joining the list of sentence to a string
     final_sents = [ word.text for word in summerized_sents]
     summary = " ".join(final_sents)
+    summary = summary.replace("<", "&lt;")
     return summary

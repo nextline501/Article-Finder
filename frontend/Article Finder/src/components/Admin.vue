@@ -11,19 +11,19 @@
         <div class="form-group row" id="adminForm">
           <label for="inputTitle">Title</label>
           <div class="col-sm">
-          <input class="form-control p-2 mb-4" id="inputTitle" placeholder="Article title">
+          <input class="form-control p-2 mb-4" id="inputTitle" placeholder="Article title" required v-model="articleTitle">
         </div>
 
         <div class="form-group">
           <label id="labelURL" for="inputURL">URL</label>
           <div class="col-sm">
-          <input class="form-control p-2 mb-4" id="inputURL" placeholder="Article path">
+          <input class="form-control p-2 mb-4" id="inputURL" placeholder="Article path" required v-model="articleUrl">
       </div>
     </div>
     
 
       <div class="container d-grid gap-2" id="buttonArea">
-        <button v-if= "!showSpinner" id="postArticleText" @click="createArticleText" class="btn btn-dark btn-rounded" type="button">
+        <button v-if= "!showSpinner" id="postArticleText" @click="createNewArticleText" class="btn btn-dark btn-rounded" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
             <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
             <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
@@ -48,10 +48,50 @@
 </template>
 
 <script>
-import Admin from "./Admin.vue"
+//import Admin from "./Admin.vue"
+import DataServices from '../services/DataServices';
 
 export default {
     name: 'Admin',
+
+    data(){
+      return {
+        articleTitle: "",
+        articleUrl: "",
+        showSpinner: false,
+      
+      }
+    },
+
+    methods:{
+      checkContent(){
+
+      },
+      createNewArticleText(){
+
+        this.showSpinner = true 
+        let articleData = {
+      
+            text: "",
+            tokentree: "",
+            path: this.articleUrl,
+            title: this.articleTitle,
+            summary: ""
+        }
+      
+        DataServices.addArticleAdmin(articleData).then(response => {
+          console.log(response)
+          
+          this.submitted = true
+          this.articleTitle = ""
+          this.articleUrl = ""
+          this.showSpinner = false
+          //alert("Article added to database")
+        });
+
+      },
+
+    }
 
 }
 </script>

@@ -25,13 +25,14 @@ import Home from './components/Home.vue'
 
 
 #app {
-  font-family: 'Judson', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000000;
   margin-top: 0px;
 }
+
 
 
 a.nav-link{

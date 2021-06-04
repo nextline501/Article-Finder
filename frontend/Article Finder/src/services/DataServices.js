@@ -9,6 +9,10 @@ class DataService {
     return http.post("/read", id)
   }
 
+  addArticleAdmin(data){
+    return http.post("/articles", data)
+  }
+
   get(id) {
     return http.get(`/tutorials/${id}`);
   }

@@ -4,8 +4,8 @@ from heapq import nlargest
 
 # nlp = spacy.load('en_core_web_sm')
 # nlp = spacy.load('en_core_web_md')
-# nlp = spacy.load('en_core_web_lg')
-nlp = spacy.load('en_core_web_trf')  # run this when adding tokentree and summary to DB, time doesn't matter that much
+nlp = spacy.load('en_core_web_lg')
+# nlp = spacy.load('en_core_web_trf')  
 
 def preprocessing_article(article):
 

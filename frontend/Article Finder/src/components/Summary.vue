@@ -98,7 +98,7 @@ button:hover{
 }
 
 #summaryArea{
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #summaryColumn{

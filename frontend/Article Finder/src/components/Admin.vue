@@ -2,31 +2,33 @@
 <div class="container">
 
 
-    <div class="form-group shadow " id="textAreaForm">
+    <div class="shadow form-group " id="textAreaForm">
       <div class="container" id="titleDescr">
-      <h4>Admin</h4>
-      <h5>Add article to database</h5>
+        <h4>Admin</h4>
+        <h5>Add article to database</h5>
       </div>
+
         <div class="form-group row" id="adminForm">
-    <label for="inputTitle" class="col-sm-1 col-form-label">Title</label>
-    <div class="col-sm">
-      <input class="form-control p-2 mb-4" id="inputTitle" placeholder="Article Title">
-    </div>
-            <div class="form-group row">
-    <label for="inputURL" class="col-sm-1 col-form-label">URL</label>
-    <div class="col-sm">
-      <input class="form-control p-2 mb-4" id="inputURL" placeholder="Article URL">
-    </div>
+          <label for="inputTitle">Title</label>
+          <div class="col-sm">
+          <input class="form-control p-2 mb-4" id="inputTitle" placeholder="Article title">
+        </div>
+
+        <div class="form-group">
+          <label id="labelURL" for="inputURL">URL</label>
+          <div class="col-sm">
+          <input class="form-control p-2 mb-4" id="inputURL" placeholder="Article path">
+      </div>
     </div>
     
-    </div>
-      
+
       <div class="container d-grid gap-2" id="buttonArea">
         <button v-if= "!showSpinner" id="postArticleText" @click="createArticleText" class="btn btn-dark btn-rounded" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
-  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
-  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
-</svg> SUBMIT
+            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+          </svg> 
+          SUBMIT
         </button>
 
         <button v-else id="postArticleText" class="btn btn-dark btn-rounded"  type="button" disabled>
@@ -35,7 +37,10 @@
         </button>
 
       </div>
-      </div>
+      
+
+    </div>
+  </div>
 </div>
 
 
@@ -55,27 +60,22 @@ export default {
 <style scoped>
 
 
-
-#labelText{
-  text-align: left;
-}
-
 #titleDescr{
   margin-bottom: 40px;
 }
 
 label{
-  font-size: 18px;
-
+  font-size: 20px;
 }
 
 button{
   border: 0px;
-  border-radius: 15px;
+
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease 0s;
   padding: 10px;
   font-family: 'Open Sans', sans-serif;
+  margin-top: 20px;
 }
 
 button:hover{
@@ -99,8 +99,8 @@ h4{
 #textAreaForm{
   margin-top: 40px;
   border: 1px solid rgb(223, 223, 223);
-  border-radius: 20px;
   padding: 40px;
+
 }
 
 #buttonArea{
@@ -108,8 +108,16 @@ h4{
 }
 
 #inputTitle{
-  
+  border-radius: 0px;
 }
 
+#inputURL{
+  border-radius: 0px;
+}
+
+.form-control:focus {
+  border-color: #000000;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.0);
+}
 
 </style>

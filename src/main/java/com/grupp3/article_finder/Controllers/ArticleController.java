@@ -35,6 +35,8 @@ public class ArticleController {
         articleService.deleteArticleById(id);
     }
 
+    // Exist only for testing purposes with Postman, to be able to delete a created mock article,
+    // not by auto increment id (don't work for testing), but by a mock title.
     @DeleteMapping("/api/articles/title/{title}")
     public void deleteArticleByTitle(@PathVariable String title){
         articleService.deleteArticleByTitle(title);

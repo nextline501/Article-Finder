@@ -28,7 +28,7 @@
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
-                    height="16"
+                    height="18"
                     fill="currentColor"
                     class="bi bi-file-earmark-pdf-fill"
                     viewBox="0 0 16 16"
@@ -108,7 +108,7 @@ thead {
 
 #resultsTable {
   text-align: left;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 button {

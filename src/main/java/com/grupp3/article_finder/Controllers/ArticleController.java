@@ -35,6 +35,11 @@ public class ArticleController {
         articleService.deleteArticleById(id);
     }
 
+    @DeleteMapping("/api/articles/title/{title}")
+    public void deleteArticleByTitle(@PathVariable String title){
+        articleService.deleteArticleByTitle(title);
+    }
+
     @PutMapping("/api/articles/{id}")
     public void updateArticleById(@PathVariable int id, @RequestBody Article article ){
         articleService.updateArticleById(id, article);

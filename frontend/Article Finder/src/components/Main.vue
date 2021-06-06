@@ -8,11 +8,9 @@
           class="shadow p-3 mb-5 form-control rounded-10"
           rows="15"
           id="textArea"
-          required
           v-model="textFeedModel.textFeed"
         >
         </textarea>
-
         <div class="d-grid gap-2">
           <button
             v-if="!showSpinner"
@@ -76,14 +74,15 @@ export default {
 
   methods: {
     createArticleText() {
-      if (this.textFeedModel.textFeed == "") {
-        alert("The input field is empty!");
+      if (this.textFeedModel.textFeed === "") {
+        document.querySelector("#textArea").placeholder =
+          "The input field is empty, write something!";
+        document.querySelector("#textArea").required = "true";
       } else {
         this.showSpinner = true;
         let articleData = {
           searchText: this.textFeedModel.textFeed,
         };
-
         DataServices.sendArticleText(articleData.searchText).then(
           (response) => {
             console.log(response);
@@ -130,6 +129,10 @@ button:hover {
 
 textarea {
   margin-top: 30px;
+}
+
+#textArea:invalid {
+  border-color: rgb(160, 0, 0);
 }
 
 nav-link {

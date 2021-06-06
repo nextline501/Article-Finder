@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <h4>Similar articles</h4>
+  <div class="container" id="readingTipsComp">
+    <div class="container" id="headline">
+      <h4>Similar articles</h4>
+    </div>
     <!-- what happens if there are no similar articles is not fixed yet. Code below does not work if we get empty list back -->
     <template v-if="!similarArticles.length">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-left">
         <strong>Loading...</strong>
         <div
           class="spinner-border ms-auto"
@@ -15,7 +17,7 @@
     <template v-else>
       <table class="table" id="resultsTable">
         <tbody>
-          <div class="col">
+          <div class="col" id="readingTipsCol">
             <div v-for="(article, i) in similarArticles" :key="i">
               <th scope="row">{{ i + 1 + "." }}</th>
               <td>
@@ -66,21 +68,32 @@ export default {
 </script>
 
 <style scoped>
-h4 {
-  margin-top: 20px;
-  border-bottom: 1px solid rgb(180, 180, 180);
+div {
+  margin-left: px;
 }
 
-div {
-  margin-left: 50px;
+#headline {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(180, 180, 180);
+  text-align: left;
 }
 
 .nav-link {
   text-decoration: none;
   color: black;
 }
+
 .nav-link:hover {
   color: #00bfa5;
   text-decoration: underline;
+}
+
+#readingTipsCol {
+  text-align: left;
+}
+
+#readingTipsComp {
+  margin-top: 20px;
 }
 </style>

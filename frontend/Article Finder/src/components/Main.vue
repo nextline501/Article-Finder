@@ -76,18 +76,24 @@ export default {
 
   methods: {
     createArticleText() {
-      this.showSpinner = true;
-      let articleData = {
-        searchText: this.textFeedModel.textFeed,
-      };
+      if (this.textFeedModel.textFeed == "") {
+        alert("The input field is empty!");
+      } else {
+        this.showSpinner = true;
+        let articleData = {
+          searchText: this.textFeedModel.textFeed,
+        };
 
-      DataServices.sendArticleText(articleData.searchText).then((response) => {
-        console.log(response);
-        this.storeResponse = response.data.result;
-        // Data will be available later in store, but not direct for render in this event
-        this.$store.commit("setArticles", response.data.result);
-        this.submitted = true;
-      });
+        DataServices.sendArticleText(articleData.searchText).then(
+          (response) => {
+            console.log(response);
+            this.storeResponse = response.data.result;
+            // Data will be available later in store, but not direct for render in this event
+            this.$store.commit("setArticles", response.data.result);
+            this.submitted = true;
+          }
+        );
+      }
     },
   },
 };

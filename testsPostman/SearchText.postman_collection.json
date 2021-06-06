@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "176899c0-2883-4392-b122-780fd7a439bc",
+		"name": "SearchText",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Article search returns no matches",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test mock search returns an empty array\", () => {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result).to.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"blbaclnaöcenmöamcebblac\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Article search returns matches",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test mock search returns not an empty array\", () => {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result).to.be.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects should all contain all 6 keys\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    for(let obj of jsonData.result){\r",
+							"        pm.expect(obj.article).to.have.all.keys('id','text','tokentree','path','title','summary');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects keys should all contain a value\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    for(let obj of jsonData.result){\r",
+							"        pm.expect(obj.article.id).to.be.above(0);\r",
+							"        pm.expect(obj.article.text).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.article.tokentree).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.article.path).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.article.title).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.article.summary).to.not.have.lengthOf(0)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects keys should all contain the right data type\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    for(let obj of jsonData.result){\r",
+							"        pm.expect(obj.article.id).to.be.a(\"number\");\r",
+							"        pm.expect(obj.article.text).to.be.a(\"string\");\r",
+							"        pm.expect(obj.article.tokentree).to.be.a(\"string\");\r",
+							"        pm.expect(obj.article.path).to.be.a(\"string\");\r",
+							"        pm.expect(obj.article.title).to.be.a(\"string\");\r",
+							"        pm.expect(obj.article.summary).to.be.a(\"string\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\"I love python and machine learning\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

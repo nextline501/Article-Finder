@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "3a6953f8-5a97-41ae-8244-b85e7847df14",
+		"name": "CrudDbTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all articles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Test mock search returns not an empty array\", () => {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects should all contain all 6 keys\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    for(let obj of jsonData){\r",
+							"        pm.expect(obj).to.have.all.keys('id','text','tokentree','path','title','summary');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects keys should all contain a value\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    for(let obj of jsonData){\r",
+							"        pm.expect(obj.id).to.be.above(0);\r",
+							"        pm.expect(obj.text).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.tokentree).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.path).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.title).to.not.have.lengthOf(0)\r",
+							"        pm.expect(obj.summary).to.not.have.lengthOf(0)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects keys should all contain the right data type\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    for(let obj of jsonData){\r",
+							"        pm.expect(obj.id).to.be.a(\"number\");\r",
+							"        pm.expect(obj.text).to.be.a(\"string\");\r",
+							"        pm.expect(obj.tokentree).to.be.a(\"string\");\r",
+							"        pm.expect(obj.path).to.be.a(\"string\");\r",
+							"        pm.expect(obj.title).to.be.a(\"string\");\r",
+							"        pm.expect(obj.summary).to.be.a(\"string\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new article",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response object shouldn't be empty\", () => {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects should all contain all 6 keys\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.all.keys('id','text','tokentree','path','title','summary');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects keys should all contain a value\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.be.above(0);\r",
+							"    pm.expect(jsonData.text).to.not.have.lengthOf(0)\r",
+							"    pm.expect(jsonData.tokentree).to.not.have.lengthOf(0)\r",
+							"    pm.expect(jsonData.path).to.not.have.lengthOf(0)\r",
+							"    pm.expect(jsonData.title).to.not.have.lengthOf(0)\r",
+							"    pm.expect(jsonData.summary).to.not.have.lengthOf(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response objects keys should all contain the right data type\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.be.a(\"number\");\r",
+							"    pm.expect(jsonData.text).to.be.a(\"string\");\r",
+							"    pm.expect(jsonData.tokentree).to.be.a(\"string\");\r",
+							"    pm.expect(jsonData.path).to.be.a(\"string\");\r",
+							"    pm.expect(jsonData.title).to.be.a(\"string\");\r",
+							"    pm.expect(jsonData.summary).to.be.a(\"string\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"\",\r\n    \"tokentree\": \"\",\r\n    \"path\": \"https://arxiv.org/pdf/1309.0238.pdf\",\r\n    \"title\": \"titleTest\",\r\n    \"summary\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete created article",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/articles/title/titleTest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"articles",
+						"title",
+						"titleTest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

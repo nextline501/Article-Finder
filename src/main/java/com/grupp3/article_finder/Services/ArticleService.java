@@ -36,6 +36,10 @@ public class ArticleService {
         articleRepository.deleteById(id);
     }
 
+    public void deleteArticleByTitle(String title) {
+        articleRepository.deleteByTitleIgnoreCase(title);
+    }
+
     public void updateArticleById(int id, Article article) {
         if(articleRepository.existsById(id)){
             article.setId(id);

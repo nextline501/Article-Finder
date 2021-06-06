@@ -1,0 +1,5 @@
+-- Run all tests with newman in terminal, in the folder with the collections --
+
+type:
+
+newman run AllTests.postman_collection.json

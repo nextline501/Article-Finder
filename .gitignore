@@ -35,3 +35,7 @@ build/
 ### Python
 venv
 __pycache__ 
+
+
+### SQLite DB
+*.db

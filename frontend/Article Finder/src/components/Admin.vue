@@ -95,22 +95,15 @@ export default {
   methods: {
     checkContent() {},
     createNewArticleText() {
-      if ((this.articleUrl === "") & (this.articleTitle === "")) {
+      if ((this.articleUrl.includes(".pdf") != true) || (this.articleTitle === "")) {
         document.querySelector("#inputTitle").required = "true";
         document.querySelector("#inputTitle").placeholder =
-          "The input field is empty, write something!";
+          "Empty input!";
         document.querySelector("#inputURL").placeholder =
-          "The input field is empty, write something!";
+          "Invalid URL! ";
         document.querySelector("#inputURL").required = "true";
-      } else if (this.articleUrl === "") {
-        document.querySelector("#inputURL").placeholder =
-          "The input field is empty, write something!";
-        document.querySelector("#inputURL").required = "true";
-      } else if (this.articleTitle === "") {
-        document.querySelector("#inputTitle").required = "true";
-        document.querySelector("#inputTitle").placeholder =
-          "The input field is empty, write something!";
-      } else {
+      } 
+      else {
         this.showSpinner = true;
         let articleData = {
           text: "",

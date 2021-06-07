@@ -1,33 +1,40 @@
 <template>
   <div class="container">
-    <div class="shadow form-group " id="textAreaForm">
+    <div class="shadow form-group" id="textAreaForm">
       <div class="container" id="titleDescr">
         <h4>Admin</h4>
         <h5>Add article to database</h5>
       </div>
 
       <div class="form-group row" id="adminForm">
-        <label for="inputTitle">Title</label>
+        <label id="titleLabel" for="inputTitle">Title</label>
         <div class="col-sm">
           <input
-            class="form-control p-2 mb-4"
+            class="form-control p-2 mb-1"
             id="inputTitle"
             placeholder="Article title"
             v-model="articleTitle"
+            pattern=".{2,}"
           />
+          <small id="titleInvalid" style="display: none">
+            Please enter an article title!</small
+          >
         </div>
 
         <div class="form-group">
-          <label for="inputURL">URL</label>
+          <label id="urlLabel" for="inputURL">URL</label>
           <div class="col-sm">
             <input
-              class="form-control p-2 mb-4"
+              class="form-control p-2 mb-1"
               id="inputURL"
               type="url"
               pattern="https?://.+.pdf"
               placeholder="https://example.com/example.pdf"
               v-model="articleUrl"
             />
+            <small id="urlInvalid" style="display: none">
+              Please enter a valid URL!</small
+            >
           </div>
         </div>
 
@@ -74,6 +81,7 @@
         </div>
       </div>
     </div>
+    <div class="alert alert-success" role="alert" id="success" style="display:none;"></div>
   </div>
 </template>
 
@@ -95,13 +103,30 @@ export default {
   methods: {
     checkContent() {},
     createNewArticleText() {
-      if ((this.articleUrl.endsWith(".pdf") != true) || (this.articleUrl.startsWith("http") != true) || (this.articleTitle === "")) {
-        document.querySelector("#inputTitle").required = "true";
-        document.querySelector("#inputTitle").placeholder = "Empty input!";
-        document.querySelector("#inputURL").placeholder = "Invalid URL! ";
-        document.querySelector("#inputURL").required = "true";
-      } 
-      else {
+      document.querySelector("#success").innerHTML = "";
+
+      if (
+        (this.articleUrl.endsWith(".pdf") != true) &
+        (this.articleUrl.startsWith("http") != true) &
+        (this.articleTitle === "")
+      ) {
+        document.querySelector("#titleInvalid").style.display = "block";
+        document.querySelector("#urlInvalid").style.display = "block";
+      } else if (this.articleTitle === "") {
+
+        document.querySelector("#urlInvalid").style.display = "none";
+        document.querySelector("#titleInvalid").style.display = "block";
+      } else if (
+        this.articleUrl.endsWith(".pdf") != true ||
+        this.articleUrl.startsWith("http") != true
+      ) {
+        document.querySelector("#titleInvalid").style.display = "none";
+        document.querySelector("#urlInvalid").style.display = "block";
+
+      } else {
+        document.querySelector("#titleInvalid").style.display = "none";
+        document.querySelector("#urlInvalid").style.display = "none";
+
         this.showSpinner = true;
         let articleData = {
           text: "",
@@ -119,10 +144,9 @@ export default {
           this.articleUrl = "";
           this.showSpinner = false;
 
-          document.querySelector("#inputTitle").placeholder = "Article title";
-          document.querySelector("#inputTitle").required = "false";
-          document.querySelector("#inputURL").placeholder = "https://example.com/example.pdf";
-          document.querySelector("#inputURL").required = "false";
+          document.querySelector("#success").innerHTML =
+            "Article successfully added to database!";
+          document.querySelector("#success").style.display = "block";
         });
       }
     },
@@ -166,6 +190,12 @@ h4 {
   font-weight: bold;
 }
 
+#titleInvalid,
+#urlInvalid {
+  color: rgb(216, 0, 0);
+  text-align: left;
+}
+
 #textAreaForm {
   margin-top: 40px;
   border: 1px solid rgb(223, 223, 223);
@@ -177,17 +207,24 @@ h4 {
   margin-bottom: 40px;
 }
 
+#success {
+  margin-top: 40px;
+}
+
 #inputTitle {
+  border-radius: 0px;
   border-radius: 10px;
 }
 
 #inputURL {
+  border-radius: 0px;
   border-radius: 10px;
 }
 
 label {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
+
 }
 
 .form-control:focus {
@@ -198,4 +235,7 @@ label {
 .form-control:invalid {
   border-color: red;
 }
+
+
+
 </style>

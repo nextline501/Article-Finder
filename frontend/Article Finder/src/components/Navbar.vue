@@ -11,7 +11,7 @@
         />
         Article Finder
       </a>
-      <span class="navbar-text">Login</span>
+      <span class="navbar-text">LOGIN</span>
     </div>
   </nav>
 </template>
@@ -29,11 +29,11 @@ a {
   font-size: 25px;
 }
 .navbar-text {
-  font-weight: 300;
+  font-weight: 400;
   margin-right: 20px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 300;
-  font-family: "Playfair Display", serif;
+  font-family: "Open Sans", serif;
 }
 
 nav {

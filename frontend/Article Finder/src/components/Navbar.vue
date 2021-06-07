@@ -12,7 +12,7 @@
         Article Finder
       </a>
       <span>
-        <router-link to="/admin" class="nav-link">ADMIN</router-link></span
+        <router-link to="/admin" class="nav-link">Admin</router-link></span
       >
     </div>
   </nav>
@@ -48,6 +48,7 @@ img {
   font-size: 18px;
   margin-right: 20px;
 }
+
 .nav-link:hover {
   color: #00bfa5;
 }

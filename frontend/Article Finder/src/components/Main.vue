@@ -132,7 +132,7 @@ textarea {
 }
 
 #textArea:invalid {
-  border-color: rgb(160, 0, 0);
+  border-color: red;
 }
 
 nav-link {

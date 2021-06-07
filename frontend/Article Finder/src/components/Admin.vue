@@ -1,4 +1,6 @@
 <template>
+
+
   <div class="container">
     <div class="shadow form-group" id="textAreaForm">
       <div class="container" id="titleDescr">
@@ -10,7 +12,7 @@
         <label for="inputTitle">Title</label>
         <div class="col-sm">
           <input
-            class="form-control p-2 mb-4"
+            class="form-control p-2 mb-4 "
             id="inputTitle"
             placeholder="Article title"
             v-model="articleTitle"
@@ -23,7 +25,9 @@
             <input
               class="form-control p-2 mb-4"
               id="inputURL"
-              placeholder="Article path"
+              type="url"
+              pattern="https?://.+.pdf"
+              placeholder="https://example.com/example.pdf"
               v-model="articleUrl"
             />
           </div>
@@ -197,7 +201,7 @@ label {
 }
 
 .form-control:invalid {
-  border-color: rgb(160, 0, 0);
-  color: red;
+  border-color: red;
+
 }
 </style>

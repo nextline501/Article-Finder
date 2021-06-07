@@ -9,6 +9,8 @@ Vue vite:
   Dependencies:
   npm install axios
   npm install -g newman
+  
+  pip install pdfminer
 
 test 
 cd postmanCollection

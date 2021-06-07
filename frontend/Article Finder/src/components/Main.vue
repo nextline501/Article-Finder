@@ -3,6 +3,9 @@
     <div v-if="!submitted">
       <div class="form-group" id="textAreaForm">
         <label for="textArea">Match</label>
+        <small id="textInvalid" style="display: none">
+          Please enter at least one character!
+        </small>
         <textarea
           placeholder="Input text that you want to match"
           class="shadow p-3 mb-5 form-control rounded-10"
@@ -11,6 +14,7 @@
           v-model="textFeedModel.textFeed"
         >
         </textarea>
+
         <div class="d-grid gap-2">
           <button
             v-if="!showSpinner"
@@ -75,10 +79,10 @@ export default {
   methods: {
     createArticleText() {
       if (this.textFeedModel.textFeed === "") {
-        document.querySelector("#textArea").placeholder =
-          "The input field is empty, write something!";
         document.querySelector("#textArea").required = "true";
+        document.querySelector("#textInvalid").style.display = "block";
       } else {
+                document.querySelector("#textInvalid").style.display = "none";
         this.showSpinner = true;
         let articleData = {
           searchText: this.textFeedModel.textFeed,
@@ -106,7 +110,6 @@ export default {
 
 label {
   font-size: 28px;
-
   font-weight: bold;
 }
 
@@ -128,7 +131,7 @@ button:hover {
 }
 
 textarea {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 #textArea:invalid {
@@ -137,5 +140,9 @@ textarea {
 
 nav-link {
   text-decoration: none;
+}
+#textInvalid {
+  color: rgb(216, 0, 0);
+  text-align: left;
 }
 </style>

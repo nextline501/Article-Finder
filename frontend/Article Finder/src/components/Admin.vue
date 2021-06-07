@@ -97,10 +97,8 @@ export default {
     createNewArticleText() {
       if ((this.articleUrl.endsWith(".pdf") != true) || (this.articleUrl.startsWith("http") != true) || (this.articleTitle === "")) {
         document.querySelector("#inputTitle").required = "true";
-        document.querySelector("#inputTitle").placeholder =
-          "Empty input!";
-        document.querySelector("#inputURL").placeholder =
-          "Invalid URL! ";
+        document.querySelector("#inputTitle").placeholder = "Empty input!";
+        document.querySelector("#inputURL").placeholder = "Invalid URL! ";
         document.querySelector("#inputURL").required = "true";
       } 
       else {
@@ -120,7 +118,11 @@ export default {
           this.articleTitle = "";
           this.articleUrl = "";
           this.showSpinner = false;
-          //alert("Article added to database")
+
+          document.querySelector("#inputTitle").placeholder = "Article title";
+          document.querySelector("#inputTitle").required = "false";
+          document.querySelector("#inputURL").placeholder = "https://example.com/example.pdf";
+          document.querySelector("#inputURL").required = "false";
         });
       }
     },

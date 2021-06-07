@@ -8,10 +8,13 @@ Vue vite:
   
   Dependencies:
   npm install axios
+  npm install -g newman
+  
+  pip install pdfminer
 
 test 
-cd "article finder"
-cd .. för att backa
+cd postmanCollection
+newman run ArticleFinder.postman_collection.json
 
 Starta Sanic server
   cd nlpApi

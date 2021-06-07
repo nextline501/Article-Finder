@@ -1,8 +1,6 @@
 <template>
-
-
   <div class="container">
-    <div class="shadow form-group" id="textAreaForm">
+    <div class="shadow form-group " id="textAreaForm">
       <div class="container" id="titleDescr">
         <h4>Admin</h4>
         <h5>Add article to database</h5>
@@ -12,7 +10,7 @@
         <label for="inputTitle">Title</label>
         <div class="col-sm">
           <input
-            class="form-control p-2 mb-4 "
+            class="form-control p-2 mb-4"
             id="inputTitle"
             placeholder="Article title"
             v-model="articleTitle"
@@ -154,6 +152,7 @@ button {
   padding: 10px;
   font-family: "Open Sans", sans-serif;
   margin-top: 20px;
+  border-radius: 10px;
 }
 
 button:hover {
@@ -176,6 +175,7 @@ h4 {
   margin-top: 40px;
   border: 1px solid rgb(223, 223, 223);
   padding: 40px;
+  border-radius: 10px;
 }
 
 #buttonArea {
@@ -183,11 +183,11 @@ h4 {
 }
 
 #inputTitle {
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 #inputURL {
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 label {
@@ -202,6 +202,5 @@ label {
 
 .form-control:invalid {
   border-color: red;
-
 }
 </style>

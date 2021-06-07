@@ -25,7 +25,9 @@
             <input
               class="form-control p-2 mb-4"
               id="inputURL"
-              placeholder="Article path"
+              type="url"
+              pattern="https?://.+.pdf"
+              placeholder="https://example.com/example.pdf"
               v-model="articleUrl"
             />
           </div>

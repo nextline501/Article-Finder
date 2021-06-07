@@ -95,7 +95,7 @@ export default {
   methods: {
     checkContent() {},
     createNewArticleText() {
-      if ((this.articleUrl.includes(".pdf") != true) || (this.articleTitle === "")) {
+      if ((this.articleUrl.endsWith(".pdf") != true) || (this.articleUrl.startsWith("http") != true) || (this.articleTitle === "")) {
         document.querySelector("#inputTitle").required = "true";
         document.querySelector("#inputTitle").placeholder =
           "Empty input!";

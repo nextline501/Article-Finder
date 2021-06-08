@@ -13,8 +13,8 @@ Vue vite:
   pip install pdfminer
 
 test 
-cd postmanCollection
-newman run ArticleFinder.postman_collection.json
+cd testsPostman
+newman run AllTests.postman_collection.json
 
 Starta Sanic server
   cd nlpApi

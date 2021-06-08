@@ -1,17 +1,22 @@
 <template>
   <div class="container" id="summaryContainer">
     <div class="row">
-      <router-link to="/matches">
-        <button id="BackBtn" class="btn-dark">
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
-</svg>
+      <div class="col-3">
+        <button class="btn-dark" id="BackBtn">
+          <router-link to="/matches" id="linkBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
           RESULT PAGE
-        </button>
-      </router-link>
+          </router-link>
+        </button> 
+      </div>
     </div>
+    
     <div class="row" id="titleColumn">
+      <div>
       <h4>{{ currentArticle.title }}</h4>
+      </div>
     </div>
     <div class="col" id="summaryColumn">
       <p id="summaryArea">{{ currentArticle.summary }}</p>
@@ -97,6 +102,7 @@ button {
   float: left;
   margin-bottom: 20px;
   border-radius: 15px;
+  
 }
 
 button:hover {
@@ -121,6 +127,10 @@ button:hover {
   text-align: left;
 }
 
+#linkBtn{
+  text-decoration: none;
+  color: white;
+}
 .nav-link {
   float: left;
 }

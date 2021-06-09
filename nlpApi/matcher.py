@@ -1,12 +1,8 @@
 import spacy
 from spacy.matcher import PhraseMatcher
 
-# Models "lg, md, sm" matches 8 articles in around 5-6 s, but "trf" takes 157 s
-# nlp = spacy.load('en_core_web_sm')
-# nlp = spacy.load('en_core_web_md')
 nlp = spacy.load('en_core_web_lg')  # run this when matching
 # nlp = spacy.load("en_core_web_trf")
-# print(nlp.pipe_names) ---> ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 
 
 def preprocessing(article):
@@ -74,7 +70,6 @@ def match_rank_articles(search_text, article_list):
 
     for match in match_results:
         if match['percent_match']> 0:
-            # print("Inside match results", match['percent_match'])
             match_results_filtered.append(match)
 
     if len(match_results_filtered) > 5:

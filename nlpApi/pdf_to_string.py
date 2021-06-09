@@ -10,9 +10,6 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 
-
-
-
 # New entry in DB
 # The idea is to send a title and pdf-path as obj from Vue --> Spring --> Sanic --> Spacy (title + generated: text tokentree summary) --> Spring --> DB
 
@@ -56,8 +53,3 @@ def pdf_to_string_process(path):
     content = pdf_to_string()
     delete_created_file()
     return content
-
-
-# Run below to test
-# path = "https://arxiv.org/pdf/1309.0238.pdf"
-# pdf_to_string_process(path)

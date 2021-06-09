@@ -2,8 +2,6 @@ import spacy
 from collections import Counter
 from heapq import nlargest
 
-# nlp = spacy.load('en_core_web_sm')
-# nlp = spacy.load('en_core_web_md')
 nlp = spacy.load('en_core_web_lg')
 # nlp = spacy.load('en_core_web_trf')  
 
@@ -55,8 +53,6 @@ def get_summary(article, limit):
                     contains_verb += 1
             if contains_noun > 0 and contains_verb > 0:
                  comp_sentences.append(sent)
-    #new_sents = [ word.text for word in comp_sentences]
-    #new_text = " ".join(new_sents)
 
     # Create list of keywords
     keyword =[]

@@ -22,8 +22,9 @@ Springboot server
 * Run "ArticleFinderApplication" in your IDE
 
 Api testning
-1. cd testsPostman
-2. newman run AllTests.postman_collection.json
+1. npm install -g newman
+2. cd testsPostman
+3. newman run AllTests.postman_collection.json
 
 Dependencies
 * pip install -r requirements.txt

@@ -5,7 +5,7 @@ It´s possible to add a new article with URL and title into the database. (It ha
 NLP SpaCy then breaks down the PDF to string text and summarizes the text into a shorter paragraph.
 
 #Project setup (Windows)
-Springboot, Sanic and VUE needs to be up and running for the app to work.
+* Springboot, Sanic and VUE needs to be up and running for the app to work.
 
 Terminal 1 (Frontend server)
 1. cd frontend
@@ -18,12 +18,12 @@ Terminal 2 (Sanic server)
 2. python main.py
 
 Springboot server
-Article-Finder\src\main\java\com\grupp3\article_finder
-Run "ArticleFinderApplication" in your IDE
+* Article-Finder\src\main\java\com\grupp3\article_finder
+* Run "ArticleFinderApplication" in your IDE
 
 Api testning
 1. cd testsPostman
 2. newman run AllTests.postman_collection.json
 
 Dependencies
-pip install -r requirements.txt
+* pip install -r requirements.txt

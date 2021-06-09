@@ -17,13 +17,13 @@ def preprocessing(article):
     doc_cleaned = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct and token.pos_ in ['PROPN','NOUN','ADJ','VERB']]
 
     not_wanted = ['\n','\x02']
-    list = []
+    myList = []
 
     for text in doc_cleaned:
         if text not in not_wanted:
-            list.append(text)
+            myList.append(text)
 
-    return list
+    return myList
 
 
 def find_matches(sample, article):

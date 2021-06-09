@@ -104,6 +104,7 @@ export default {
     checkContent() {},
     createNewArticleText() {
       document.querySelector("#success").innerHTML = "";
+      document.querySelector("#success").style.display = "none";
 
       if (
         (this.articleUrl.endsWith(".pdf") != true) &
